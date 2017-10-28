@@ -1,0 +1,12 @@
+﻿l_english:
+####################################
+
+trait_prideful: "Prideful"
+trait_prideful_desc: "§LMembers of this species are extraordinary prideful and believe in a rightful superiority of their species.§!\n"
+TRAIT_prideful_EFFECT: "Ruler Opinion Impact: §R-15§!\n$MOD_LEADER_SPECIES_EXP_GAIN$: §R-15%§!\n$tile_resource_minerals_mult$: §G15%§!\n$tile_resource_unity_mult$: §G15%§!\n$MOD_LEADER_SKILL_LEVELS$: §G1%§!"
+
+name_list_Mirovandian: "Mirovandian"
+name_list_MirovandianRoman: "Mirovandian Roman"
+
+EMPIRE_DESIGN_Mirovandian: "United Mirovandian Empire"
+EMPIRE_DESIGN_Mirovandian_desc: "The Mirovandian Empire plans on uniting the galaxy under her dominion. The Empire rules with an iron fist, yet she is not despotic in nature. Citizens get to vote on their leaders and everyone is welcome to be part of the Empire. However, no other nations are allowed to question her authority and rightful hegemony over the galaxy.\n\nBe assimilated or be destroyed."

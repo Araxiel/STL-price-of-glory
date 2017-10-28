@@ -1,0 +1,275 @@
+###############################
+# Corp Events
+# by Araxiel
+###############################
+
+### Corporate Leaders
+namespace = corp_leader
+
+# Gives a chance that corporate goon
+country_event = {
+	id = corp_leader.1
+	is_triggered_only = yes
+	hide_window = yes
+
+ #gods; bless this mess
+	immediate = {
+		from = {
+			random_list = {
+				1 = {
+					modifier = {
+						factor = 0
+						ROOT =  { has_faction = corp_agriculture }
+					}
+					add_trait = leader_trait_corp_agriculture
+				}
+			}
+		}
+	}
+}
+
+### General Corp
+namespace = corp_general
+
+# corp_general.1		-	corp init
+country_event = {
+	id = corp_general.1
+	is_triggered_only = yes
+	hide_window = yes
+
+	trigger = {
+		has_country_flag = first_corp_made
+	}
+
+	immediate = {
+		every_country = {
+			limit = {
+				has_faction = corp_agriculture
+			}
+			divide_variable = { which = corp_agriculture.opinion value = 0.8 }
+		}
+		every_country = {
+			limit = {
+				has_faction = corp_agriculture
+			}
+			divide_variable = { which = corp_mining.opinion value = 0.8 }
+		}
+	}
+}
+
+# HQ
+pop_faction_event = {
+	id = corp_general.2
+	title = corp_general.2.title
+	show_sound = event_factions
+
+	picture = GFX_evt_megafarm
+	desc = corp_general.2.desc
+
+	is_triggered_only = yes
+
+	trigger = {
+		exists = from
+	}
+
+	immediate = {
+		owner = {
+			random_owned_planet = {
+				limit = {
+				free_building_tiles > 1
+				num_pops > 2
+					is_homeworld = no
+					any_tile = {
+						has_blocker = no
+						has_building = no
+					}
+				}
+				save_event_target_as = new_corp_HQ_planet
+			}
+		}
+	}
+
+	location = event_target:new_corp_HQ_planet
+
+	option = {
+		name = OK
+		owner= {
+			event_target:new_corp_HQ_planet = {
+				random_tile = {
+					limit = {
+						has_blocker = no
+						has_building = no
+					}
+					ROOT = {
+						switch = {
+							trigger = is_pop_faction_type
+							corp_agriculture 	= { PREV = { set_building = building_corp_agriculture_hq1 } }
+							corp_mining 			=	{ PREV = { set_building = building_corp_mining_hq1 } }
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+######## mining_corp
+namespace = mining_corp
+
+# mining_corp.1 				- Mining Corp Creation
+pop_faction_event = {
+	id = mining_corp.1
+	title = mining_corp.1.title
+	desc = mining_corp.1.desc
+
+	picture = GFX_evt_megafarm
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	option = {
+		name = OK
+		hidden_effect = {
+			pop_faction_event = { id = corp_general.2 days = 180 }
+			owner = {
+				set_country_flag = first_corp_made
+				set_variable = { which = mining_corp.opinion value = 0 }
+			}
+		}
+	}
+}
+
+######## corp_agriculture
+namespace = agricultural_corp
+
+# agricultural_corp.1		- corp_agriculture Creation
+pop_faction_event = {
+	id = agricultural_corp.1
+	title = agricultural_corp.1.title
+	desc = agricultural_corp.1.desc
+
+	picture = GFX_evt_megafarm
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+		owner = {
+			random_owned_planet = {
+				save_event_target_as = @OWNER_agricultural_corp_home
+			}
+		}
+	}
+
+	option = {
+		name = OK
+		hidden_effect = {
+			pop_faction_event = { id = corp_general.2 days = 10 }
+			owner = {
+				set_country_flag = first_corp_made
+				set_variable = { which = corp_agriculture.opinion value = 0 }
+			}
+		}
+	}
+}
+
+##### Debugging Events
+namespace = corp_debug
+
+country_event = {
+	id = corp_debug.1
+	title = corp_debug.1.title
+	desc = "corp_debug.1.desc"
+
+	picture = GFX_evt_galactic_senate
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	trigger = {
+		NOT = { hates_corporations = yes }
+		corporations_allowed = yes
+		years_passed > 2
+		count_owned_pops = {
+			limit = {	is_enslaved = no }
+			count > 15
+		}
+		any_owned_planet = {
+			free_building_tiles > 1
+			num_pops > 2
+			is_homeworld = no
+			any_tile = {
+				has_blocker = no
+				has_building = no
+			}
+		}
+	}
+
+	after = {
+	}
+
+	option = {
+		name = OK
+		enable_faction_of_type = corp_agriculture
+		every_owned_planet = {
+			every_owned_pop = {
+				force_faction_evaluation = yes
+			}
+		}
+	}
+}
+
+country_event = {
+	id = corp_debug.2
+	title = corp_debug.2.title
+	desc = "corp_debug.2.desc"
+
+	picture = GFX_evt_galactic_senate
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	trigger = {
+		any_owned_pop = {
+			is_enslaved = no
+			is_shackled_robot = no
+			is_being_purged = no
+			has_culture_shock = no
+			NOT = { has_trait = trait_nerve_stapled }
+			owner = { NOT = { hates_corporations = yes } }
+			NOT = { has_ethic = ethic_militarist }
+			NOT = { has_ethic = ethic_fanatic_militarist }
+			OR = {
+				pop_produces_resource = { type = food amount > 1 }
+				planet = {
+					any_tile = {
+						OR = {
+							has_building = building_corp_agriculture_hq1
+							has_building = building_corp_agriculture_hq2
+							has_building = building_corp_agriculture_hq_branch
+						}
+					}
+				}
+			}
+		}
+	}
+
+	after = {
+	}
+
+	option = {
+		name = OK
+		every_owned_planet = {
+			every_owned_pop = {
+				set_pop_faction = corp_agriculture
+			}
+		}
+	}
+}
