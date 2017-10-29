@@ -1,0 +1,31 @@
+
+
+subversive_media = {
+  icon = "gfx/interface/icons/planet_modifiers/pm_planet_separatist_supporter.dds"
+  icon_frame = 2
+  pop_government_ethic_attraction = -0.5
+}
+
+subversive_media_ega = {
+  icon = "gfx/interface/icons/planet_modifiers/pm_planet_separatist_supporter.dds"
+  icon_frame = 2
+  pop_ethic_xenophile_attraction_mult = 0.25
+  pop_ethic_egalitarian_attraction_mult = 0.25
+  pop_government_ethic_attraction = -0.5
+}
+
+raided_political_opponents = {
+  icon = "gfx/interface/icons/planet_modifiers/pm_police.dds"
+  icon_frame = 2
+  planet_unrest_add = 30
+}
+raided_political_opponents_2 = {
+  icon = "gfx/interface/icons/planet_modifiers/pm_police.dds"
+  icon_frame = 2
+  planet_unrest_add = 45
+}
+raided_political_opponents_3 = {
+  icon = "gfx/interface/icons/planet_modifiers/pm_police.dds"
+  icon_frame = 2
+  planet_unrest_add = 60
+}
