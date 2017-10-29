@@ -1,0 +1,9 @@
+
+#checks to see if not a fanatic type that does not believe in private enterprise
+
+is_isolationist = {
+  OR = {
+    has_valid_civic = civic_inwards_perfection
+    has_policy_flag = regulation_isolationism
+  }
+}
