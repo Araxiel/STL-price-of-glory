@@ -1,0 +1,11 @@
+spriteTypes = {
+
+	## map modes
+	spriteType = {	name = "GFX_map_mode_trade_regulation"	texturefile = "gfx/interface/icons/map_mode_trade.dds"			noOfFrames = 2	}
+	spriteType = {	name = "GFX_map_mode_wip"	texturefile = "gfx/interface/icons/map_mode_wip.dds"		noOfFrames = 2	}
+
+	## events
+	spriteType = {	name = "GFX_evt_cyberpunk_cops"					texturefile = "gfx/events/cyberpunk_police.dds"			}
+	spriteType = {	name = "GFX_evt_busy_city"							texturefile = "gfx/events/busy_city.dds"						}
+
+}

@@ -1,6 +1,9 @@
 map_mode_trade
   Trade by Gregor Cresnar from the Noun Project
 
+map_mode_wip.dds
+  work in progress by corpus delicti from the Noun Project
+
 busy_city
   Tonatiuh Ocampo
 
