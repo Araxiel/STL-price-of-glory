@@ -1,0 +1,34 @@
+#########################################################################
+# OPINION MODIFIERS
+##########################################################################
+
+opinion_policy_trade_regulation = {
+	opinion = {
+		base = 0
+		modifier = {
+			add = -15
+			has_policy_flag = regulation_free_trade
+			FROM = {
+				has_policy_flag = regulation_mercantilism
+			}
+		}
+
+		modifier = {
+			add = -30
+			has_policy_flag = regulation_free_trade
+			FROM = {
+				OR = {
+					has_policy_flag = regulation_isolationism
+				}
+			}
+		}
+
+		modifier = {
+			add = 15
+			has_policy_flag = regulation_free_trade
+			FROM = {
+				has_policy_flag = regulation_free_trade
+			}
+		}
+	}
+}
