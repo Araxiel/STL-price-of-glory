@@ -1,0 +1,159 @@
+
+@5people_resource_cost = -5000
+@5people_food_cost = -250
+@10people_resource_cost = -10000
+@10people_food_cost = -500
+@15people_resource_cost = -15000
+@15people_food_cost = -750
+@20people_resource_cost = -20000
+@20people_food_cost = -1000
+@25people_resource_cost = -25000
+@25people_food_cost = -1250
+
+pay_disaster_resources = {
+
+  # < 5
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count < 5
+        }
+      }
+    }
+    add_minerals = @5people_resource_cost
+    add_energy = @5people_resource_cost
+    add_food = @5people_food_cost
+  }
+  ## 5-10
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 4
+        }
+        count_pops = {
+          count < 11
+        }
+      }
+    }
+    add_minerals = @10people_resource_cost
+    add_energy = @10people_resource_cost
+    add_food = @10people_food_cost
+  }
+  ## 11-15
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 11
+        }
+        count_pops = {
+          count < 16
+        }
+      }
+    }
+    add_minerals = @15people_resource_cost
+    add_energy = @15people_resource_cost
+    add_food = @15people_food_cost
+  }
+  ## 16-20
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 15
+        }
+        count_pops = {
+          count < 21
+        }
+      }
+    }
+    add_minerals = @20people_resource_cost
+    add_energy = @20people_resource_cost
+    add_food = @20people_food_cost
+  }
+  ## 21 =<
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 20
+        }
+      }
+    }
+    add_minerals = @25people_resource_cost
+    add_energy = @25people_resource_cost
+    add_food = @25people_food_cost
+  }
+
+}
+
+pay_food_disaster_resources = {
+
+  # < 5
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count < 5
+        }
+      }
+    }
+    add_food = @5people_food_cost
+  }
+  ## 5-10
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 4
+        }
+        count_pops = {
+          count < 11
+        }
+      }
+    }
+    add_food = @10people_food_cost
+  }
+  ## 11-15
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 11
+        }
+        count_pops = {
+          count < 16
+        }
+      }
+    }
+    add_food = @15people_food_cost
+  }
+  ## 16-20
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 15
+        }
+        count_pops = {
+          count < 21
+        }
+      }
+    }
+    add_food = @20people_food_cost
+  }
+  ## 21 =<
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 20
+        }
+      }
+    }
+    add_food = @25people_food_cost
+  }
+
+}
