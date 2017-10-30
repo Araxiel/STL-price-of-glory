@@ -32,3 +32,24 @@ opinion_policy_trade_regulation = {
 		}
 	}
 }
+
+### Disaster Aid sending
+disaster_aid_send = {
+	opinion = {
+		base = 15
+	}
+
+	decay = {
+		base = 2
+	}
+}
+
+disaster_aid_recieved = {
+	opinion = {
+		base = 25
+	}
+
+	decay = {
+		base = 2
+	}
+}
