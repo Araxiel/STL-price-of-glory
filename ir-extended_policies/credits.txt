@@ -15,3 +15,6 @@ combine_radio_chatter_1
 combine_radio_chatter_2
 metrocop_radio_chatter_1
   Half Life 2 by Valve
+
+sandstorm
+  Mad Max: Fury Road
