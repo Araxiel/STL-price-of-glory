@@ -4,12 +4,12 @@
 ###############################
 
 ##### Media Events
-namespace = ep_media_events
+namespace = ep_media_event
 
-# ep_media_events.1
+# ep_media_event.1
 # State Media - subversive media initiator - hidden event
-country_event = {
-	id = ep_media_events.1
+planet_event = {
+	id = ep_media_event.1
 
 	hide_window = yes
 
@@ -17,69 +17,62 @@ country_event = {
 		years = 65
 		modifier = {
 			factor = 0.5
-			has_policy_flag = "regulation_state_media"
+			OWNER = {
+				has_policy_flag = "regulation_state_media"
+			}
 		}
 	}
 
 	trigger = {
+		has_owner = yes
 		years_passed > 10
-		count_owned_pops = {
-			limit = {	is_enslaved = no }
-			count > 15
-		}
-		any_owned_planet = {
+		OWNER = {
 			count_owned_pops = {
 				limit = {	is_enslaved = no }
-				count > 3
+				count > 15
 			}
-			NOT = { has_planet_flag = recent_subversive_media }
-			is_capital = no
+			OR = {
+				has_policy_flag = "regulation_state_media"
+				has_policy_flag = "regulation_controlled_media"
+			}
 		}
-		OR = {
-			has_policy_flag = "regulation_state_media"
-			has_policy_flag = "regulation_controlled_media"
+		count_owned_pops = {
+			limit = {	is_enslaved = no }
+			count > 3
 		}
+		NOT = { has_planet_flag = recent_subversive_media }
+		is_capital = no
 	}
 
 	after = {
 	}
 
 	immediate = {
-		random_owned_planet = {
-			limit = {
-				count_owned_pops = {
-					limit = {	is_enslaved = no }
-					count > 3
-				}
-				NOT = { has_planet_flag = recent_subversive_media }
-				is_capital = no
+		save_event_target_as = subversive_media_planet
+		random_list = {
+			## not found
+			30 = {
+				planet_event = { id = ep_media_event.2 days = 10 random = 10 }
 			}
-			save_event_target_as = subversive_media_planet
-			random_list = {
-				## not found
-				30 = {
-					planet_event = { id = ep_media_events.2 days = 10 random = 10 }
-				}
-				## being found
-				60 = {
-					planet_event = { id = ep_media_events.3 days = 10 random = 10 }
-				}
-		  }
-			set_timed_planet_flag = {
-				flag = recent_subversive_media
-				days = 720
+			## being found
+			60 = {
+				planet_event = { id = ep_media_event.3 days = 10 random = 10 }
 			}
+		}
+		set_timed_planet_flag = {
+			flag = recent_subversive_media
+			days = 720
 		}
 	}
 
 }
 
-# ep_media_events.2
+# ep_media_event.2
 # State Media - subversive media not intercepted
 planet_event = {
-	id = ep_media_events.2
-	title = ep_media_events.2.title
-	desc = "ep_media_events.2.desc"
+	id = ep_media_event.2
+	title = ep_media_event.2.title
+	desc = "ep_media_event.2.desc"
 	location = ROOT
 
 	picture = GFX_evt_smugglers_in_bar
@@ -96,7 +89,7 @@ planet_event = {
 	immediate = {
 		add_modifier = {
 			modifier = subversive_media
-			days = 2000 # 5.4 years
+			days = 2000 # 5.4 years / 66 months
 		}
 	}
 
@@ -105,19 +98,19 @@ planet_event = {
 		tooltip = {
 			add_modifier = {
 				modifier = subversive_media
-				days = 2000 # 5.4 years
+				days = 2000 # 5.4 years / 66 months
 			}
 		}
 	}
 
 }
 
-# ep_media_events.3
+# ep_media_event.3
 # State Media - subversive media intercepted
 planet_event = {
-	id = ep_media_events.3
-	title = ep_media_events.3.title
-	desc = "ep_media_events.3.desc"
+	id = ep_media_event.3
+	title = ep_media_event.3.title
+	desc = "ep_media_event.3.desc"
 	picture = GFX_evt_cyberpunk_cops
 	show_sound = event_combine_chatter
 
@@ -135,7 +128,7 @@ planet_event = {
 	}
 
 	option = {
-		name = ep_media_events.3.a
+		name = ep_media_event.3.a
 		add_modifier = {
 			modifier = raided_political_opponents
 			days = 2000 # 5.4 years
@@ -143,54 +136,11 @@ planet_event = {
 	}
 
 	option = {
-		name = ep_media_events.3.b
+		name = ep_media_event.3.b
 		add_modifier = {
 			modifier = subversive_media
 			days = 2000 # 5.4 years
 		}
 	}
 
-}
-
-##### Debugging Events
-namespace = ep_events_debug
-
-country_event = {
-	id = ep_events_debug.1
-	title = ep_events_debug.1.title
-	desc = "ep_events_debug.1.desc"
-
-	picture = GFX_evt_galactic_senate
-	show_sound = event_factions
-
-	is_triggered_only = yes
-
-	trigger = {
-		years_passed > 2
-		count_owned_pops = {
-			limit = {	is_enslaved = no }
-			count > 15
-		}
-		any_owned_planet = {
-			free_building_tiles > 1
-			num_pops > 2
-			is_homeworld = no
-			any_tile = {
-				has_blocker = no
-				has_building = no
-			}
-		}
-	}
-
-	after = {
-	}
-
-	option = {
-		name = OK
-		every_owned_planet = {
-			every_owned_pop = {
-				force_faction_evaluation = yes
-			}
-		}
-	}
 }
