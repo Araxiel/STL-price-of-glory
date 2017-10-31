@@ -18,7 +18,7 @@ is_artificial_planet = {
 ##### Disasters
 
 ## scaling cost with population
-## 25 energy and materials per pop; 1 food per pop; for 50 months
+## 20 energy and materials per pop; 1 food per pop; for 50 months
 
 @5people_resource_cost = 5000
 @5people_food_cost = 250
