@@ -42,7 +42,7 @@ drought_aid = {
   icon = "gfx/interface/icons/planet_modifiers/pm_drought_aid.dds"
   icon_frame = 1
   planet_unrest_add = 10
-  planet_resource_food_add = 6
+  planet_resource_food_add = 5
 }
 
 disaster_aid = {
