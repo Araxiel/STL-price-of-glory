@@ -127,19 +127,61 @@ planet_event = {
 	immediate = {
 	}
 
+	# raid
 	option = {
 		name = ep_media_event.3.a
 		add_modifier = {
 			modifier = raided_political_opponents
 			days = 2000 # 5.4 years
 		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				unrest < 50
+			}
+			modifier = {
+				factor = 3
+				OWNER = {
+					OR = {
+						has_ethic = ethic_fanatic_militarist
+						has_ethic = ethic_fanatic_spiritualist
+						has_ethic = ethic_fanatic_xenophobe
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OWNER = {
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
 	}
 
+	# no-raid
 	option = {
 		name = ep_media_event.3.b
 		add_modifier = {
 			modifier = subversive_media
 			days = 2000 # 5.4 years
+		}
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				unrest > 50
+			}
+			modifier = {
+				factor = 2
+				OWNER = {
+					OR = {
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_xenophile
+						has_ethic = ethic_fanatic_xenophile
+					}
+				}
+			}
 		}
 	}
 

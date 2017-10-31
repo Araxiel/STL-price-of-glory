@@ -85,6 +85,59 @@ planet_event = {
 		hidden_effect = {
 			remove_modifier = disaster_no_aid
 		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				OWNER = {
+					OR = {
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				AND = {
+					OWNER = {
+						OR = {
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = OWNER }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				AND = {
+					OWNER = {
+						OR = {
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = OWNER }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OWNER = {
+					has_two_times_food = yes
+				}
+			}
+		}
 	}
 
 	option = {
@@ -189,12 +242,75 @@ country_event = {
 				hidden_effect = { country_event = { id = ep_economy_event.3 days = 2 } }
 			}
 		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				ROOT = {
+					OR = {
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				ROOT = {
+					OR = {
+						has_ethic = ethic_xenophile
+						has_ethic = ethic_fanatic_xenophile
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				AND = {
+					ROOT = {
+						OR = {
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = OWNER }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 3
+				count_pops = {
+					limit = {
+						NOT = { is_same_species = ROOT }
+					}
+					count > 5
+				}
+			}
+			modifier = {
+				factor = 0.25
+				ROOT = {
+					NOT = { has_two_times_food = yes }
+				}
+			}
+		}
 	}
 
 	option = {
 		name = "dont_help_other_empire_with_aid"
-	}
 
+		ai_chance = {
+			factor = 225
+			modifier = {
+				factor = 1.5
+				ROOT = {
+					has_ethic = ethic_militarist
+				}
+			}
+		}
+	}
 }
 
 # ep_economy_event.3
