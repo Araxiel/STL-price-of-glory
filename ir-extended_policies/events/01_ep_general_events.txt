@@ -200,7 +200,6 @@ planet_event = {
 			}
 		}
 	}
-
 }
 
 # ep_economy_event.2
@@ -345,7 +344,6 @@ country_event = {
 		}
 		FROM = { add_opinion_modifier = { modifier = disaster_aid_send who = PREV } }
 	}
-
 }
 
 # ep_economy_event.100
@@ -392,7 +390,6 @@ country_event = {
 	option = {
 		name = "dont_help_other_empire_with_aid"
 	}
-
 }
 
 # ep_economy_event.101
@@ -427,5 +424,4 @@ country_event = {
 		}
 		FROM = { add_opinion_modifier = { modifier = disaster_aid_send who = PREV } }
 	}
-
 }
