@@ -18,3 +18,9 @@ metrocop_radio_chatter_1
 
 sandstorm
   Mad Max: Fury Road
+
+event_authoritarian
+  contains Endless Space 2 by Amplitude
+
+FEDNET_Sting
+  Starship Troopers 2

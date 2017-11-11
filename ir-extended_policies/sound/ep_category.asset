@@ -6,6 +6,7 @@ category = {
  soundeffects = {
 
 	event_combine_chatter
+  event_fednet_sting
 
  }
 

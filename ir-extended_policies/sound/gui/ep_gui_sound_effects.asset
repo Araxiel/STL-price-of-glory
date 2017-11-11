@@ -5,7 +5,17 @@ soundeffect = {
 		sound = event_combine_chatter_2
 		sound = metrocop_radio_chatter_1
 	}
-	volume = 0.4
+	volume = 0.3
+	max_audible = 1
+	max_audible_behaviour = fail
+}
+
+soundeffect = {
+	name = event_fednet_sting
+	sounds = {
+		sound = fednet_sting
+	}
+	volume = 0.3
 	max_audible = 1
 	max_audible_behaviour = fail
 }

@@ -14,3 +14,8 @@ sound = {
 	file = "event/metrocop_radio_chatter_1.wav"
 	volume = 0.6
 }
+sound = {
+	name = "fednet_sting"
+	file = "event/FEDNET_Sting.wav"
+	volume = 0.6
+}

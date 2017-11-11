@@ -8,6 +8,7 @@ spriteTypes = {
 	spriteType = {	name = "GFX_evt_cyberpunk_cops"								texturefile = "gfx/events/cyberpunk_police.dds"			}
 	spriteType = {	name = "GFX_evt_busy_city"										texturefile = "gfx/events/busy_city.dds"						}
 	spriteType = {	name = "GFX_evt_sandstorm"										texturefile = "gfx/events/sandstorm.dds"						}
+	spriteType = {	name = "GFX_evt_authoritarian"								texturefile = "gfx/events/event_authoritarian.dds"	}
 
 	# vanilla stuff
 	spriteType = {	name = "GFX_planet_resource_energy_add"				texturefile = "gfx/interface/icons/modifiers/country_resource_energy_add.dds"						}
