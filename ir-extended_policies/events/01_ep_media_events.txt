@@ -6,8 +6,7 @@
 ##### Media Events
 namespace = ep_media_event
 
-# ep_media_event.1
-# State Media - subversive media initiator - hidden event
+# ep_media_event.1		- State Media - subversive media initiator - hidden event
 planet_event = {
 	id = ep_media_event.1
 
@@ -64,11 +63,9 @@ planet_event = {
 			days = 720
 		}
 	}
-
 }
 
-# ep_media_event.2
-# State Media - subversive media not intercepted
+# ep_media_event.2		- State Media - subversive media not intercepted
 planet_event = {
 	id = ep_media_event.2
 	title = ep_media_event.2.title
@@ -102,11 +99,9 @@ planet_event = {
 			}
 		}
 	}
-
 }
 
-# ep_media_event.3
-# State Media - subversive media intercepted
+# ep_media_event.3		- State Media - subversive media intercepted
 planet_event = {
 	id = ep_media_event.3
 	title = ep_media_event.3.title
