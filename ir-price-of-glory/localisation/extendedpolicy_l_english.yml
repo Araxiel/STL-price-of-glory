@@ -129,16 +129,16 @@ planet_resource_energy_add: "$tile_resource_energy_add$"
 #####################################
 ### Events
 #####################################
-ep_media_event.2.title: "Subversive Media"
-ep_media_event.2.desc: "Some troublesome individuals have spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nWhile the local authorities have immediately started cracking down on subjects and the media itself and we trust that the good citizens of our empire can not be persuaded by such reprehensible propaganda, we can not guarantee that these filthy lies have not infected at least some of our people."
+pog_media_event.2.title: "Subversive Media"
+pog_media_event.2.desc: "Some troublesome individuals have spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nWhile the local authorities have immediately started cracking down on subjects and the media itself and we trust that the good citizens of our empire can not be persuaded by such reprehensible propaganda, we can not guarantee that these filthy lies have not infected at least some of our people."
 
-ep_media_event.3.title: "Subversive Media Intercepted"
-ep_media_event.3.desc: "It has come to our attention that some troublesome individuals plan to spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nOur local authorities unearthed the radicals' operation and are ready to raid their hideout and confiscate all subversive material and arrest the people responsible for this.\n\nHowever, instead of what some might call a heavy-handed approach, we can put our trust in the stalwart vigilance of our citizens, knowing that no belligerent propaganda will sway their minds from the one true path."
-ep_media_event.3.a: "Raid the insurgents."
-ep_media_event.3.b: "Let them carry out their fruitless endeavour."
+pog_media_event.3.title: "Subversive Media Intercepted"
+pog_media_event.3.desc: "It has come to our attention that some troublesome individuals plan to spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nOur local authorities unearthed the radicals' operation and are ready to raid their hideout and confiscate all subversive material and arrest the people responsible for this.\n\nHowever, instead of what some might call a heavy-handed approach, we can put our trust in the stalwart vigilance of our citizens, knowing that no belligerent propaganda will sway their minds from the one true path."
+pog_media_event.3.a: "Raid the insurgents."
+pog_media_event.3.b: "Let them carry out their fruitless endeavour."
 
-ep_economy_event.1.title: "Drought"
-ep_economy_event.1.desc: "Drought on §H[ROOT.GetName]§!. WIP"
+pog_economy_event.1.title: "Drought"
+pog_economy_event.1.desc: "Drought on §H[ROOT.GetName]§!. WIP"
 
 help_our_planet_with_aid: "Send Disaster Aid to them!"
 dont_help_our_planet_with_aid: "We can't spare those resources."
@@ -147,11 +147,11 @@ dont_help_other_empire_with_aid: "We can't spare those resources to help them."
 disaster_aid_send: "Send Aid"
 disaster_aid_recieved: "Recieved Aid"
 
-ep_economy_event.2.title: "Drought struck the [FROM.OWNER.GetName]"
-ep_economy_event.2.desc: "Drought has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+pog_economy_event.2.title: "Drought struck the [FROM.OWNER.GetName]"
+pog_economy_event.2.desc: "Drought has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
 
-ep_economy_event.3.title: "We Recieved Help!"
-ep_economy_event.3.desc: "Disaster has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+pog_economy_event.3.title: "We Recieved Help!"
+pog_economy_event.3.desc: "Disaster has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
 
 ## Disaster Aid cost
 need_minerals_5people: "Need 5000 £minerals\n\n"

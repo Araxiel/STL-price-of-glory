@@ -20,18 +20,18 @@ special_project = {
 	}
 
 	on_progress_50 = {
-		ship_event = { id = ep_media_event.12 }
+		ship_event = { id = pog_media_event.12 }
 	}
 
 	on_progress_75 = {
 	}
 
   on_success = {
-    ship_event = { id = ep_media_event.13 }
+    ship_event = { id = pog_media_event.13 }
   }
 
   on_fail = {
-    country_event = { id = ep_media_event.14 }
+    country_event = { id = pog_media_event.14 }
   }
 
   on_start = {
@@ -59,18 +59,18 @@ special_project = {
 	}
 
 	on_progress_50 = {
-		ship_event = { id = ep_media_event.12 }
+		ship_event = { id = pog_media_event.12 }
 	}
 
 	on_progress_75 = {
 	}
 
   on_success = {
-    ship_event = { id = ep_media_event.13 }
+    ship_event = { id = pog_media_event.13 }
   }
 
   on_fail = {
-    country_event = { id = ep_media_event.14 }
+    country_event = { id = pog_media_event.14 }
   }
 
   on_start = {
@@ -98,18 +98,18 @@ special_project = {
 	}
 
 	on_progress_50 = {
-		ship_event = { id = ep_media_event.12 }
+		ship_event = { id = pog_media_event.12 }
 	}
 
 	on_progress_75 = {
 	}
 
   on_success = {
-    ship_event = { id = ep_media_event.13 }
+    ship_event = { id = pog_media_event.13 }
   }
 
   on_fail = {
-    country_event = { id = ep_media_event.14 }
+    country_event = { id = pog_media_event.14 }
   }
 
   on_start = {
