@@ -1,7 +1,0 @@
-on_decade_pulse = {
-  events = {
-    ep_media_event.10
-  }
-}
-
-#on_war_won

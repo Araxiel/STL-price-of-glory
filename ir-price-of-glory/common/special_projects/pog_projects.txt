@@ -1,0 +1,119 @@
+
+# Fleet Parade I
+special_project = {
+	key = "FLEET_PARADE_1_PROJECT"
+	cost = 0
+	days_to_research = 120
+	tech_department = society_technology
+	picture = GFX_evt_authoritarian
+	icon = "gfx/interface/icons/situation_log/situation_log_ship.dds"
+	timelimit = 500
+
+	event_scope = ship_event
+
+	requirements = {
+		fleet_power = 4000
+		leader = admiral
+	}
+
+	on_progress_25 = {
+		ship_event = { id = pog_military.03 }
+	}
+
+	on_progress_50 = {
+		ship_event = { id = pog_military.03 }
+	}
+
+	on_progress_75 = {
+		ship_event = { id = pog_military.03 }
+	}
+
+  on_success = {
+    ship_event = { id = pog_military.04 }
+  }
+
+  on_fail = {
+    country_event = { id = pog_military.05 }
+  }
+
+  on_start = {
+  }
+}
+
+# Fleet Parade II
+special_project = {
+	key = "FLEET_PARADE_2_PROJECT"
+	cost = 0
+	days_to_research = 120
+	tech_department = society_technology
+	picture = GFX_evt_authoritarian
+	icon = "gfx/interface/icons/situation_log/situation_log_ship.dds"
+	timelimit = 500
+
+	event_scope = ship_event
+
+	requirements = {
+		fleet_power = 10000
+		leader = admiral
+	}
+
+  on_progress_25 = {
+	}
+
+	on_progress_50 = {
+		ship_event = { id = pog_military.03 }
+	}
+
+	on_progress_75 = {
+	}
+
+  on_success = {
+    ship_event = { id = pog_military.04 }
+  }
+
+  on_fail = {
+    country_event = { id = pog_military.05 }
+  }
+
+  on_start = {
+  }
+}
+
+# Fleet Parade III
+special_project = {
+	key = "FLEET_PARADE_3_PROJECT"
+	cost = 0
+	days_to_research = 120
+	tech_department = society_technology
+	picture = GFX_evt_authoritarian
+	icon = "gfx/interface/icons/situation_log/situation_log_ship.dds"
+	timelimit = 500
+
+	event_scope = ship_event
+
+	requirements = {
+		fleet_power = 50000
+		leader = admiral
+	}
+
+  on_progress_25 = {
+	}
+
+	on_progress_50 = {
+		ship_event = { id = pog_military.03 }
+	}
+
+	on_progress_75 = {
+	}
+
+  on_success = {
+    ship_event = { id = pog_military.04 }
+  }
+
+  on_fail = {
+    country_event = { id = pog_military.05 }
+  }
+
+  on_start = {
+  }
+}

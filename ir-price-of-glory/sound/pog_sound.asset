@@ -1,0 +1,21 @@
+## Price Of Glory
+sound = {
+	name = "event_combine_chatter_1"
+	file = "event/combine_radio_chatter_1.wav"
+	volume = 0.6
+}
+sound = {
+	name = "event_combine_chatter_2"
+	file = "event/combine_radio_chatter_2.wav"
+	volume = 0.6
+}
+sound = {
+	name = "metrocop_radio_chatter_1"
+	file = "event/metrocop_radio_chatter_1.wav"
+	volume = 0.6
+}
+sound = {
+	name = "fednet_sting"
+	file = "event/FEDNET_Sting.wav"
+	volume = 0.6
+}

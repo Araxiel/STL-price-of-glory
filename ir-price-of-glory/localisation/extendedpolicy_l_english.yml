@@ -1,0 +1,171 @@
+﻿l_english:
+####################################
+
+#####################################
+## Market Regulation
+policy_market_regulation: "Economy Regulation"
+policy_market_regulation_desc: "Our economy is with what type of system goods are being produced and how these goods are being distributed to the citizens.\n\n"
+regulation_free_markets_name: "Free Market"
+regulation_free_markets: "Free Market"
+regulation_free_markets_desc: "Private actors are producing and selling goods based on supply and demand. The government is writing and enforcing laws to protect both consumers and corporations for the good of the many, but does not dictate or directly interfere in the market.\n\n"
+regulation_laissez_faire_name: "Laissez-Faire"
+regulation_laissez_faire: "Laissez-Faire"
+regulation_laissez_faire_desc: "The government has a complete hands-off approach to the economy and only collects taxes, which it uses to pay for private contractors when needed. The economy is completely dominated by demand, supply and the ability to pay.\n\n"
+regulation_heavily_regulated_name: "Heavily Regulated"
+regulation_heavily_regulated: "Heavily Regulated"
+regulation_heavily_regulated_desc: "Private actors are producing and selling goods based on supply and demand. However, the government heavily dictates what and how goods are being produced and is greatly involved in the distribution of goods to where there are needed.\n\n"
+regulation_centralised_production_name: "Centralised Production"
+regulation_centralised_production: "Centralised Production"
+regulation_centralised_production_desc: "The government directly controls the economy and decides which goods are being produced and who receives what.\n\n"
+
+PROSPERITY_FREE_MARKET: "Free Markets"
+PROSPERITY_UNFREE_MARKET: "Shackled Markets"
+PROSPERITY_FREE_MARKET_DESC: "We can only truly prosper if the government stops interfering with the economy. The market knows the market best, let supply and demand reign, not politicians."
+
+TOTALITARIAN_EFFICIENT_MARKET: "Efficient Economy"
+TOTALITARIAN_INEFFICIENT_MARKET: "Inefficient Economy"
+TOTALITARIAN_EFFICIENT_MARKET_DESC: "Our military and government needs to be strong; it can only do so if it controls the means of production. We can not trust our empire's economy to be in the hands of self-centred capitalists chasing after personal profits."
+
+#####################################
+## Trade Regulation
+policy_trade_regulation: "Trade Regulations"
+policy_trade_regulation_desc: "Trade is how either the citizens of our empires are allowed to interact with citizens of other empires or, in case of a centralised economy, how the state interacts trades with foreigners.\n\n"
+regulation_mercantilism_name: "Mercantilism"
+regulation_mercantilism: "Mercantilism"
+regulation_mercantilism_desc: "Citizens of our empire are strongly encouraged to buy local and while trade with other empires can happen, it is heavily discouraged through tariffs, taxes and other means of protectionism.\n\n"
+regulation_isolationism_name: "Isolationism"
+regulation_isolationism: "Isolationism"
+regulation_isolationism_desc: "Cut all ties with the outside world. No diplomatic actions with other empires are allowed. Trade and interactions with foreigners are strictly forbidden.\n\n"
+regulation_free_trade_name: "Free Trade"
+regulation_free_trade: "Free Trade"
+regulation_free_trade_desc: "Citizens of other empires and ours are freely allowed to do business and trade.\n\n"
+
+## gestalt
+regulation_gestalt_free_trade_name: "Gestalt Trade"
+regulation_gestalt_free_trade: "Gestalt Trade"
+regulation_gestalt_free_trade_desc: "This Gestalt-Consciousness decides to work with the lesser beings to achieve prosperity and obtain needed materials it can not produce."
+regulation_gestalt_no_trade_name: "No Trade"
+regulation_gestalt_no_trade: "No Trade"
+regulation_gestalt_no_trade_desc: "This Gestalt-Consciousness does not need any lesser beings."
+
+opinion_policy_trade_regulation: "Trade Stifled"
+
+requires_actor_not_isolationist: "§RWe live in isolationism and have little interest in diplomacy with other empires.§!"
+requires_target_not_isolationist: "§RThey are living in isolationism and have little interest in diplomacy with other empires.§!"
+
+war_demand_force_trade_header: "§HForce Open Markets§!"
+war_demand_force_trade_subtext: "[parameter:country.GetName]"
+war_demand_force_trade_tooltip_header: "$war_demand_force_trade_header$"
+war_demand_force_trade_tooltip_content: "[parameter:country.GetName] will be forced to open their markets to us. We will also gain §G50§! £influence ."
+war_demand_force_trade_tooltip_proper_header: "$war_demand_force_trade_header$"
+war_demand_force_trade_tooltip_proper_content: "$war_demand_force_trade_tooltip_content$"
+
+trade_regulation: "Trade Regulation"
+trade_regulation_desc: "Empire Borders will be colored based on their Foreign Trade status."
+
+#####################################
+## Media Regulation
+policy_media_regulation: "Media Regulation"
+policy_media_regulation_desc: "Media is all kind of information that our citizens have access to. This encompasses news from within our empires and from across the galaxy and it also counts towards what kind of entertainment is allowed to be consumed and produced.\n\n"
+regulation_free_media_name: "Free Media"
+regulation_free_media: "Free Media"
+regulation_free_media_desc: "Our citizens are allowed to consume and produce whatever they desire. The government has no authority over the media and foreign media is allowed to be consumed.\n\n"
+regulation_controlled_media_name: "Controlled Media"
+regulation_controlled_media: "Controlled Media"
+regulation_controlled_media_desc: "Our citizens can generally consume and produce media as they wish, but our government reserves the right to censor out material that are offensive or antagonistic to our goals. Foreign media is available, but generally limited.\n\n"
+regulation_state_media_name: "State Media"
+regulation_state_media: "State Media"
+regulation_state_media_desc: "The government has almost total government control over information and the media. Only information that is sanctioned by the government is allowed to reach the masses. All subversive material is illegal.\n\n"
+
+PROGRESSIVE_FREE_MEDIA: "Free Media"
+PROGRESSIVE_UNFREE_MEDIA: "Controlled Media"
+PROGRESSIVE_FREE_MEDIA_DESC: "A well informed citizenry is the best defence against tyranny; it is the cornerstone of democracy. Only with free access to information can a people be free to make their own, informed choices."
+#PROGRESSIVE_FREE_MEDIA_DESC: "The aspirations of democracy are based on the notion of an informed citizenry, capable of making wise decisions. The choices we are asked to make become increasingly complex. They require the longer-term thinking and greater tolerance for ambiguity that science fosters. The new economy is predicated on a continuous pipeline of scientific and technological innovation. It can not exist without workers and consumers who are mathematically and scientifically literate. ~Ann Druyan" #Ann Druyan
+
+#####################################
+## Assembly Regulation
+policy_assembly_regulation: "Assembly Regulation"
+policy_assembly_regulation_desc: "The right to meet in public is central to a well-functioning republic or democracy, but it breeds seditiousness and allows hostile actors to steer our empire away from its rightful goal.\n\n"
+regulation_free_assembly_name: "Assembly Allowed"
+regulation_free_assembly: "Assembly Allowed"
+regulation_free_assembly_desc: "Citizens are allowed to freely assemble and hold public meetings.\n\n"
+regulation_assembly_prohibited_name: "Assembly Prohibited"
+regulation_assembly_prohibited: "Assembly Prohibited"
+regulation_assembly_prohibited_desc: "Citizens are not allowed to freely assemble and unsanctioned public meetings are illegal. Any assembly of 10 or more citizens needs permission by the government.\n\n"
+regulation_assembly_forced_name: "Mandatory Assembly"
+regulation_assembly_forced: "Mandatory Assembly"
+regulation_assembly_forced_desc: "It is mandatory to attend the regular government sponsored meetings, to prosper national unity and strength towards the common, greater good.\n\n"
+
+PROGRESSIVE_ASSEMBLY_ALLOWED: "Assemblies are allowed"
+PROGRESSIVE_ASSEMBLY_NOT_ALLOWED: "Assemblies are illegal"
+PROGRESSIVE_ASSEMBLY_ALLOWED_DESC: "It is currently illegal for citizens to peacefully assemble and hold voluntary public meetings; both are a cornerstone for a working, civil and fair society."
+
+#####################################
+### Static Modifiers
+subversive_media: "Subversive Media"
+subversive_media_desc: "Opponents of our government and ideology have spread non-sanctioned information and media."
+subversive_media_ega: "Subversive Media"
+subversive_media_ega_desc: "Opponents of our government and ideology have spread non-sanctioned information and media; especially that of foreign governments!"
+raided_political_opponents: "Shutdown of Political Opponents"
+raided_political_opponents_desc: "Local authorities have interrupted the operations of political opponents. While we hope our citizens understand this was for the greater good, it will still stir controversy."
+raided_political_opponents_2: "Raided Political Opponents"
+raided_political_opponents_desc_2: "Local authorities have raided the operations of political opponents. While we hope our citizens understand this was for the greater good, it will still stir controversy."
+raided_political_opponents_3: "Planet-wide Crack Down"
+raided_political_opponents_desc_3: "Local authorities have raided the operations of political opponents across the entire planet with full force. Small skirmishes erupted all across the planet, and many people are scared."
+
+drought: "Drought"
+drought_desc: "The weather has shifted drastically and dramatically; even our hydroponic farms have been affected and their food output has drastically decreased."
+
+drought_aid: "Drought Aid"
+drought_aid_desc: "$disaster_aid_desc$"
+
+disaster_aid: "Disaster Aid"
+disaster_aid_desc: "With outside aid, order has been maintained and the people are being helped through these trying times."
+disaster_no_aid: "No Aid"
+disaster_no_aid_desc: "Being left to fend for themselves, order has broken down and the state of emergency as-well as martial law has been declared."
+
+planet_resource_energy_add: "$tile_resource_energy_add$"
+
+#####################################
+### Events
+#####################################
+pog_media_event.2.title: "Subversive Media"
+pog_media_event.2.desc: "Some troublesome individuals have spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nWhile the local authorities have immediately started cracking down on subjects and the media itself and we trust that the good citizens of our empire can not be persuaded by such reprehensible propaganda, we can not guarantee that these filthy lies have not infected at least some of our people."
+
+pog_media_event.3.title: "Subversive Media Intercepted"
+pog_media_event.3.desc: "It has come to our attention that some troublesome individuals plan to spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nOur local authorities unearthed the radicals' operation and are ready to raid their hideout and confiscate all subversive material and arrest the people responsible for this.\n\nHowever, instead of what some might call a heavy-handed approach, we can put our trust in the stalwart vigilance of our citizens, knowing that no belligerent propaganda will sway their minds from the one true path."
+pog_media_event.3.a: "Raid the insurgents."
+pog_media_event.3.b: "Let them carry out their fruitless endeavour."
+
+pog_economy_event.1.title: "Drought"
+pog_economy_event.1.desc: "Drought on §H[ROOT.GetName]§!. WIP"
+
+help_our_planet_with_aid: "Send Disaster Aid to them!"
+dont_help_our_planet_with_aid: "We can't spare those resources."
+help_other_empire_with_aid: "We shall help those in need!"
+dont_help_other_empire_with_aid: "We can't spare those resources to help them."
+disaster_aid_send: "Send Aid"
+disaster_aid_recieved: "Recieved Aid"
+
+pog_economy_event.2.title: "Drought struck the [FROM.OWNER.GetName]"
+pog_economy_event.2.desc: "Drought has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+
+pog_economy_event.3.title: "We Recieved Help!"
+pog_economy_event.3.desc: "Disaster has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+
+## Disaster Aid cost
+need_minerals_5people: "Need 5000 £minerals\n\n"
+need_minerals_10people: "Need 10000 £minerals\n\n"
+need_minerals_15people: "Need 15000 £minerals\n\n"
+need_minerals_20people: "Need 20000 £minerals\n\n"
+need_minerals_25people: "Need 25000 £minerals\n\n"
+need_energy_5people: "Need 5000 £energy\n\n"
+need_energy_10people: "Need 10000 £energy\n\n"
+need_energy_15people: "Need 15000 £energy\n\n"
+need_energy_20people: "Need 20000 £energy\n\n"
+need_energy_25people: "Need 25000 £energy\n\n"
+need_food_5people: "Need 250 £food\n\n"
+need_food_10people: "Need 500 £food\n\n"
+need_food_15people: "Need 750 £food\n\n"
+need_food_20people: "Need 1000 £food\n\n"
+need_food_25people: "Need 1250 £food\n\n"

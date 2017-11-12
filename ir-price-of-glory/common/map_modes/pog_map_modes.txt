@@ -1,0 +1,121 @@
+#Scope layout:
+# this = the country who owns the borders we a re coloring
+# from = the country who we are coloring for, usually the player
+
+#example = {
+#	icon = "GFX_some_icon"		-- which icon to use in the main gui
+#	hardcoded_tooltip = opinion -- override tooltip generation with a hardcoded method. Currently supported: opinion
+#	can_change_point_of_view = yes	-- can the player click on other empires to see the map mode from their point of view?
+#	enable_terra_incognita = yes	-- should terra incognita be rendered when this map mode is active?
+#
+#	color = {						-- the bread and butter of the map modes. A country will be colored with the first color block who's condition is met
+#		value = rgb { 1.0 0.0 0.0 1.0 }	-- you can also use hsv {...}
+#		custom_tooltip = "SOME_STRING"	-- Tooltip to be shown if this is the selected color. suports [This.GetName] etc
+#		condition = {
+#			...							-- simple AND trigger for evaluation. Will also generate a tooltip if neither hardcoded_tooltip or custom_tooltip is defined
+#		}
+#	}
+#}
+
+trade_regulation = {
+	icon = "GFX_map_mode_trade_regulation"
+	enable_terra_incognita = yes
+
+	color = {
+    value = hsv { 0.15 1.0 1.0 1.0 }			# yellow like Mercantilism
+    condition = {
+      has_policy_flag = regulation_mercantilism
+    }
+  }
+
+	color = {
+    value = hsv { 0.0 1.0 0.5 1.0 }		# red like no
+    condition = {
+      has_policy_flag = regulation_isolationism
+    }
+  }
+
+	color = {
+  	value = hsv { 0.6 1.0 1.0 1.0 } 		# blue like the globe
+  	condition = {
+      has_policy_flag = regulation_free_trade
+    }
+  }
+	color = {
+  	value = hsv { 0.6 1.0 1.0 1.0 } 		# blue like the globe
+    condition = {
+      has_policy_flag = regulation_gestalt_free_trade
+    }
+  }
+
+	color = {
+  	value = hsv { 0.0 0.0 0.5 1.0 } 		# grey like nothing
+    condition = {
+      has_policy_flag = regulation_gestalt_no_trade
+    }
+  }
+}
+
+############################################################
+### Debugging
+
+market_regulation = {
+	icon = "GFX_map_mode_wip"
+	enable_terra_incognita = yes
+
+	color = {
+    value = hsv { 0.33 1.0 1.0 1.0 }				#green like capitalism
+    condition = {
+      has_policy_flag = regulation_free_markets
+    }
+  }
+
+	color = {
+  	value = hsv { 0.15 1.0 1.0 1.0 }		#yellow like ancaps
+    condition = {
+      has_policy_flag = regulation_laissez_faire
+    }
+  }
+
+	color = {
+    value = hsv { 0.0 1.0 1.0 1.0 }		#red like commmis
+    condition = {
+      has_policy_flag = regulation_centralised_production
+    }
+  }
+
+	color = {
+    value = hsv { 0.6 1.0 1.0 1.0 }		#blue like socalists
+    condition = {
+      has_policy_flag = regulation_heavily_regulated
+    }
+  }
+
+}
+
+media_regulation = {
+	icon = "GFX_map_mode_wip"
+	enable_terra_incognita = yes
+
+	color = {
+        value = hsv { 0.15 1.0 1.0 1.0 }			# yellow like semi-censoring
+        condition = {
+            has_policy_flag = regulation_controlled_media
+        }
+    }
+
+	color = {
+         value = hsv { 0.6 1.0 1.0 1.0 }		# blue like 24/7 news
+        condition = {
+            has_policy_flag = regulation_free_media
+        }
+    }
+
+	color = {
+         value = hsv { 0.0 1.0 1.0 1.0 } 		# red like truth news
+        condition = {
+            has_policy_flag = regulation_state_media
+        }
+    }
+
+}

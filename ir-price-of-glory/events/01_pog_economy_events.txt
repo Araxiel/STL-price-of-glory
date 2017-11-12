@@ -1,0 +1,430 @@
+###############################
+# Price Of Glory Events
+# by Araxiel
+###############################
+
+namespace = pog_economy
+
+# pog_economy.1			-	Bad harvest
+planet_event = {
+	id = pog_economy.1
+	title = pog_economy.1.title
+	desc = "pog_economy.1.desc"
+	location = ROOT
+
+	picture = GFX_evt_sandstorm
+	show_sound = event_air_raid_siren
+
+	mean_time_to_happen = {
+		years = 65
+		modifier = {
+			factor = 0.2
+			is_terraforming = yes
+		}
+	}
+
+	trigger = {
+		years_passed > 20
+		count_pops = {
+			limit = {
+				pop_produces_resource = { type = food amount > 1 }
+			}
+			count > 1
+		}
+		NOT = { has_planet_flag = recent_drought }
+		NOT = { has_modifier = cornucopia }
+		is_colony = yes
+		NOT = { is_capital = yes }
+		NOT = { is_artificial_planet = yes }
+		OWNER = {
+			NOT = { has_ethic = ethic_gestalt_consciousness }
+		}
+	}
+
+	immediate = {
+		set_timed_planet_flag = {
+			flag = recent_drought
+			days = 1460 # 4 years
+		}
+		set_timed_planet_flag = {
+			flag = recent_disaster
+			days = 1460 # 4 years
+		}
+		add_modifier = {
+			modifier = drought
+			days = 1460 # 4 years
+		}
+		add_modifier = {
+			modifier = disaster_no_aid
+			days = 1460 # 4 years
+		}
+		save_event_target_as = disaster_targeted_planet
+	}
+
+	# help
+	option = {
+		name = "help_our_planet_with_aid"
+		allow = {
+			OWNER = {
+				has_disaster_food = yes
+			}
+		}
+		OWNER = {
+			pay_food_disaster_resources = yes
+		}
+		tooltip = {
+			add_modifier = {
+				modifier = drought
+				days = 1460 # 4 years / 48 months
+			}
+		}
+		add_modifier = {
+			modifier = drought_aid
+			days = 1460 # 4 years / 48 months
+		}
+		hidden_effect = {
+			remove_modifier = disaster_no_aid
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				OWNER = {
+					OR = {
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				AND = {
+					OWNER = {
+						OR = {
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = OWNER }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.5
+				AND = {
+					OWNER = {
+						OR = {
+							has_ethic = ethic_xenophobe
+							has_ethic = ethic_fanatic_xenophobe
+						}
+					}
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = OWNER }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				OWNER = {
+					has_two_times_food = yes
+				}
+			}
+		}
+	}
+
+	# don't help
+	option = {
+		name = "dont_help_our_planet_with_aid"
+		tooltip = {
+			add_modifier = {
+				modifier = drought
+				days = 1460 # 4 years
+			}
+			add_modifier = {
+				modifier = disaster_no_aid
+				days = 1460 # 4 years
+			}
+		}
+		## neighbours get asked
+		hidden_effect = {
+			OWNER = {
+				random_neighbor_country = {
+					limit = {
+						OR = {
+							## Is a xenophile friend
+							AND = {
+								opinion = { who = PREV value > 80 }
+								OR = {
+									has_ethic = ethic_xenophile
+									has_ethic = ethic_fanatic_xenophile
+								}
+							}
+							## Is a bestest, non-racist friend
+							AND = {
+								opinion = { who = PREV value > 150 }
+								NOR = {
+									has_ethic = ethic_xenophobe
+									has_ethic = ethic_fanatic_xenophobe
+									has_ethic = ethic_fanatic_militarist
+								}
+							}
+							## fanatic xenophile
+							AND = {
+								has_ethic = ethic_fanatic_xenophile
+								opinion = { who = PREV value > -50 }
+							}
+							## not super-self-centered in federation
+							AND = {
+								NOR = {
+									has_ethic = ethic_fanatic_xenophobe
+									has_ethic = ethic_fanatic_militarist
+								}
+								OR = {
+									is_in_federation_with = PREV
+									has_association_status = PREV
+								}
+							}
+						}
+						# not closed borders
+						NOT = { has_closed_borders = PREV }
+					}
+					country_event = { id = pog_economy.2 days = 10 random = 10 }
+				}
+			}
+		}
+	}
+}
+
+# pog_economy.2			-	give drought aid to other nation
+country_event = {
+	id = pog_economy.2
+	title = pog_economy.2.title
+	desc = "pog_economy.2.desc"
+	picture = GFX_evt_sandstorm
+	show_sound = event_administrative_work
+
+	location = FROM
+
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = {
+			has_planet_flag = recent_disaster
+		}
+	}
+
+	immediate = {
+	}
+
+	# help them
+	option = {
+		name = "help_other_empire_with_aid"
+		allow = {
+			has_disaster_resources = yes
+		}
+		pay_disaster_resources = yes
+		FROM = {
+			add_modifier = {
+				modifier = drought_aid
+				days = 1460 # 4 years
+			}
+			remove_modifier = disaster_no_aid
+			OWNER = {
+				add_opinion_modifier = { modifier = disaster_aid_recieved who = ROOT }
+				hidden_effect = { country_event = { id = pog_economy.3 days = 2 } }
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 2
+				ROOT = {
+					OR = {
+						has_ethic = ethic_egalitarian
+						has_ethic = ethic_fanatic_egalitarian
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				ROOT = {
+					OR = {
+						has_ethic = ethic_xenophile
+						has_ethic = ethic_fanatic_xenophile
+					}
+				}
+			}
+			modifier = {
+				factor = 2
+				AND = {
+					ROOT = {
+						OR = {
+							has_ethic = ethic_xenophile
+							has_ethic = ethic_fanatic_xenophile
+						}
+					}
+					ROOT = {
+						count_pops = {
+							limit = {
+								NOT = { is_same_species = OWNER }
+							}
+							count > 5
+						}
+					}
+				}
+			}
+			modifier = {
+				factor = 3
+				ROOT = {
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = ROOT }
+						}
+						count > 5
+					}
+				}
+			}
+			modifier = {
+				factor = 0.25
+				ROOT = {
+					NOT = { has_two_times_food = yes }
+				}
+			}
+		}
+	}
+
+	# don't help
+	option = {
+		name = "dont_help_other_empire_with_aid"
+
+		ai_chance = {
+			factor = 225
+			modifier = {
+				factor = 1.5
+				ROOT = {
+					has_ethic = ethic_militarist
+				}
+			}
+		}
+	}
+}
+
+# pog_economy.3			-	we recieved drought aid
+country_event = {
+	id = pog_economy.3
+	title = pog_economy.3.title
+	desc = "pog_economy.3.desc"
+	picture = GFX_evt_big_landing_ship
+	show_sound = event_administrative_work
+
+	location = FROM
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = OK
+		tooltip = {
+			event_target:disaster_targeted_planet = {
+				remove_modifier = disaster_no_aid
+				add_modifier = {
+					modifier = drought_aid
+					days = 1460 # 4 years / 48 months
+				}
+			}
+		}
+		FROM = { add_opinion_modifier = { modifier = disaster_aid_send who = PREV } }
+	}
+}
+
+# pog_economy.100		-	give general aid to other nation
+country_event = {
+	id = pog_economy.100
+	title = pog_economy.100.title
+	desc = "pog_economy.100.desc"
+	picture = GFX_evt_cyberpunk_cops
+	show_sound = event_combine_chatter
+
+	location = FROM
+
+	is_triggered_only = yes
+
+	trigger = {
+		FROM = {
+			has_planet_flag = recent_disaster
+		}
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = "help_other_empire_with_aid"
+		allow = {
+			has_disaster_resources = yes
+		}
+		pay_disaster_resources = yes
+		FROM = {
+			add_modifier = {
+				modifier = disaster_aid
+				days = 1460 # 4 years
+			}
+			remove_modifier = disaster_no_aid
+			OWNER = {
+				add_opinion_modifier = { modifier = disaster_aid_recieved who = ROOT }
+				hidden_effect = { country_event = { id = pog_economy.101 days = 2 } }
+			}
+		}
+	}
+
+	option = {
+		name = "dont_help_other_empire_with_aid"
+	}
+}
+
+# pog_economy.101		-	we recieved aid
+country_event = {
+	id = pog_economy.101
+	title = pog_economy.101.title
+	desc = "pog_economy.101.desc"
+	picture = GFX_evt_cyberpunk_cops
+	show_sound = event_combine_chatter
+
+	location = FROM
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	immediate = {
+	}
+
+	option = {
+		name = OK
+		tooltip = {
+			event_target:disaster_targeted_planet = {
+				remove_modifier = disaster_no_aid
+				add_modifier = {
+					modifier = disaster_aid
+					days = 1460 # 4 years / 48 months
+				}
+			}
+		}
+		FROM = { add_opinion_modifier = { modifier = disaster_aid_send who = PREV } }
+	}
+}

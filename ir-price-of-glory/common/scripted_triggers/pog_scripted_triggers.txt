@@ -1,0 +1,337 @@
+# Price of Glory scripted triggers
+
+is_isolationist = {
+  OR = {
+    has_valid_civic = civic_inwards_perfection
+    has_policy_flag = regulation_isolationism
+  }
+}
+
+is_murdering_monsters = {
+  OR = {
+    has_valid_civic = civic_fanatic_purifiers
+    has_valid_civic = civic_hive_devouring_swarm
+    has_valid_civic = civic_machine_terminator
+  }
+}
+
+is_artificial_planet = {
+  is_terraformed = yes
+  is_ringworld = yes
+}
+
+
+##################################################
+##### Disasters
+
+## scaling cost with population
+## 20 energy and materials per pop; 1 food per pop; for 50 months
+
+@5people_resource_cost = 5000
+@5people_food_cost = 250
+@10people_resource_cost = 10000
+@10people_food_cost = 500
+@15people_resource_cost = 15000
+@15people_food_cost = 750
+@20people_resource_cost = 20000
+@20people_food_cost = 1000
+@25people_resource_cost = 25000
+@25people_food_cost = 1250
+## double
+@5people_resource_cost_x2 = 10000
+@5people_food_cost_x2 = 500
+@10people_resource_cost_x2 = 20000
+@10people_food_cost_x2 = 1000
+@15people_resource_cost_x2 = 30000
+@15people_food_cost_x2 = 1500
+@20people_resource_cost_x2 = 40000
+@20people_food_cost_x2 = 2000
+@25people_resource_cost_x2 = 50000
+@25people_food_cost_x2 = 2500
+
+
+has_disaster_resources = {
+  # < 5
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count < 5
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_minerals_5people"
+      has_country_resource = { type = minerals amount > @5people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_energy_5people"
+      has_country_resource = { type = energy amount > @5people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_food_5people"
+      has_country_resource = { type = food amount > @5people_food_cost }
+    }
+  }
+  ## 5-10
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 4
+        }
+        count_pops = {
+          count < 11
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_minerals_10people"
+      has_country_resource = { type = minerals amount > @10people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_energy_10people"
+      has_country_resource = { type = energy amount > @10people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_food_10people"
+      has_country_resource = { type = food amount > @10people_food_cost }
+    }
+  }
+  ## 11-15
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 10
+        }
+        count_pops = {
+          count < 16
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_minerals_15people"
+      has_country_resource = { type = minerals amount > @15people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_energy_15people"
+      has_country_resource = { type = energy amount > @15people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_food_15people"
+      has_country_resource = { type = food amount > @15people_food_cost }
+    }
+  }
+  ## 16-20
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 15
+        }
+        count_pops = {
+          count < 21
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_minerals_20people"
+      has_country_resource = { type = minerals amount > @20people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_energy_20people"
+      has_country_resource = { type = energy amount > @20people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_food_20people"
+      has_country_resource = { type = food amount > @20people_food_cost }
+    }
+  }
+  ## 21 =<
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 20
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_minerals_25people"
+      has_country_resource = { type = minerals amount > @25people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_energy_25people"
+      has_country_resource = { type = energy amount > @25people_resource_cost }
+    }
+    custom_tooltip = {
+      text = "need_food_25people"
+      has_country_resource = { type = food amount > @25people_food_cost }
+    }
+  }
+}
+
+has_disaster_food = {
+  # < 5
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count < 5
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_5people"
+      has_country_resource = { type = food amount > @5people_food_cost }
+    }
+  }
+  ## 5-10
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 4
+        }
+        count_pops = {
+          count < 11
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_10people"
+      has_country_resource = { type = food amount > @10people_food_cost }
+    }
+  }
+  ## 11-15
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 10
+        }
+        count_pops = {
+          count < 16
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_15people"
+      has_country_resource = { type = food amount > @15people_food_cost }
+    }
+  }
+  ## 16-20
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 15
+        }
+        count_pops = {
+          count < 21
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_20people"
+      has_country_resource = { type = food amount > @20people_food_cost }
+    }
+  }
+  ## 21 =<
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 20
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_25people"
+      has_country_resource = { type = food amount > @25people_food_cost }
+    }
+  }
+}
+
+has_two_times_food = {
+  # < 5
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count < 5
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_5people"
+      has_country_resource = { type = food amount > @5people_food_cost_x2 }
+    }
+  }
+  ## 5-10
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 4
+        }
+        count_pops = {
+          count < 11
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_10people"
+      has_country_resource = { type = food amount > @10people_food_cost_x2 }
+    }
+  }
+  ## 11-15
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 10
+        }
+        count_pops = {
+          count < 16
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_15people"
+      has_country_resource = { type = food amount > @15people_food_cost_x2 }
+    }
+  }
+  ## 16-20
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 15
+        }
+        count_pops = {
+          count < 21
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_20people"
+      has_country_resource = { type = food amount > @20people_food_cost_x2 }
+    }
+  }
+  ## 21 =<
+  if = {
+    limit = {
+      event_target:disaster_targeted_planet = {
+        count_pops = {
+          count > 20
+        }
+      }
+    }
+    custom_tooltip = {
+      text = "need_food_25people"
+      has_country_resource = { type = food amount > @25people_food_cost_x2 }
+    }
+  }
+}

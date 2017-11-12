@@ -1,0 +1,53 @@
+spriteTypes = {
+
+	## map modes
+	spriteType = {	name = "GFX_map_mode_trade_regulation"				texturefile = "gfx/interface/icons/map_mode_trade.dds"			noOfFrames = 2	}
+	spriteType = {	name = "GFX_map_mode_wip"											texturefile = "gfx/interface/icons/map_mode_wip.dds"		noOfFrames = 2	}
+
+	## events
+	spriteType = {
+		name = "GFX_evt_cyberpunk_cops"
+		texturefile = "gfx/events/cyberpunk_police.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_busy_city"
+		texturefile = "gfx/events/busy_city.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_sandstorm"
+		texturefile = "gfx/events/sandstorm.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_authoritarian"
+		texturefile = "gfx/events/event_authoritarian.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_protest"
+		texturefile = "gfx/events/event_protest.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+	spriteType = {
+		name = "GFX_evt_debugging"
+		texturefile = "gfx/events/event_debugging_strippers.dds"
+		masking_texture = "gfx/interface/situation_log/event_mask.dds"
+		alwaystransparent = yes
+	}
+
+	# vanilla stuff
+	spriteType = { name = "GFX_planet_resource_energy_add"				texturefile = "gfx/interface/icons/modifiers/country_resource_energy_add.dds"	}
+	spriteType = { name = "GFX_planet_resource_food_add"					texturefile = "gfx/interface/icons/modifiers/mod_pop_food_add.dds"	}
+	spriteType = { name = "GFX_planet_resource_minerals_add"			texturefile = "gfx/interface/icons/modifiers/country_resource_minerals_add.dds"	}
+	spriteType = { name = "GFX_mod_army_attack_damage_mult"				texturefile = "gfx/interface/icons/modifiers/mod_army_damage_mult.dds"	}
+	spriteType = { name = "GFX_mod_pop_robot_build_speed_mult"		texturefile = "gfx/interface/icons/modifiers/mod_pop_robot_upkeep_mult.dds"	}
+	spriteType = { name = "GFX_country_resource_society_research_mult"	texturefile = "gfx/interface/icons/modifiers/tile_resource_society_research_mult.dds"	}
+
+}
