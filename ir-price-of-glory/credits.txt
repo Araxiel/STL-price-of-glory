@@ -23,4 +23,13 @@ event_authoritarian
   contains Endless Space 2 by Amplitude
 
 FEDNET_Sting
-  Starship Troopers 2
+  Starship Troopers
+
+pm_celebration
+  Space_Astronaut_Concept_Art_01 by Stanley Von Medvey
+
+debugging images
+  Cultist-chan on 1d4chan.org
+
+event_protest
+  Protest by Abiogenisis

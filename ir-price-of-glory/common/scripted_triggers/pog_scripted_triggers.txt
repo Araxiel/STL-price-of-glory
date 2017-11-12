@@ -1,10 +1,17 @@
-
-#checks to see if not a fanatic type that does not believe in private enterprise
+# Price of Glory scripted triggers
 
 is_isolationist = {
   OR = {
     has_valid_civic = civic_inwards_perfection
     has_policy_flag = regulation_isolationism
+  }
+}
+
+is_murdering_monsters = {
+  OR = {
+    has_valid_civic = civic_fanatic_purifiers
+    has_valid_civic = civic_hive_devouring_swarm
+    has_valid_civic = civic_machine_terminator
   }
 }
 
