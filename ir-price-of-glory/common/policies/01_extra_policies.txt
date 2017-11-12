@@ -27,7 +27,7 @@ market_regulation = {
 			tile_resource_energy_mult = 0.10
 			building_time_mult = -0.20
 			planet_building_cost_mult = -0.15
-			pop_consumer_goods_mult = 0.20
+			pop_consumer_goods_mult = -0.15
 			country_core_sector_system_cap = -2
 		}
 
@@ -79,7 +79,7 @@ market_regulation = {
 		modifier = {
 			country_trade_attractiveness = 0.05
 			pop_citizen_happiness = 0.05
-			pop_consumer_goods_mult = 0.10
+			pop_consumer_goods_mult = -0.10
 		}
 
 		AI_weight = {
@@ -191,7 +191,7 @@ market_regulation = {
 			country_trade_attractiveness = -0.25
 			tile_resource_unity_mult = 0.15
 			country_core_sector_system_cap = 1
-			pop_consumer_goods_mult = -0.15
+			pop_consumer_goods_mult = 0.15
 		}
 
 		AI_weight = {
@@ -259,6 +259,7 @@ trade_regulation = {
 				has_government = gov_devouring_swarm
 				has_government = gov_machine_terminator
 			}
+			NOT = { is_murdering_monsters = yes }
 		}
 
 		AI_weight = {
@@ -333,19 +334,24 @@ trade_regulation = {
 		modifier = {
 			planet_migration_xeno_pull = 0.10
 			country_trade_attractiveness = 0.15
-			building_time_mult = 0.10
-			planet_building_cost_mult = -0.10
+			planet_building_cost_mult = -0.05
 			tile_resource_energy_mult = 0.10
 			pop_consumer_goods_mult = -0.15
+			pop_ethics_shift_speed_mult = 0.25
 		}
 
 		valid = {
-			NOT = { has_policy_flag = regulation_isolationism }
+			NOR = {
+				has_ethic = ethic_xenophobe
+				has_ethic = ethic_fanatic_xenophobe
+			}
 			OR = {
 				has_policy_flag = regulation_free_markets
 				has_policy_flag = regulation_laissez_faire
 				has_policy_flag = regulation_heavily_regulated
 			}
+			NOT = {	is_isolationist = yes }
+			NOT = { is_murdering_monsters = yes }
 		}
 
 		AI_weight = {
@@ -561,7 +567,7 @@ media_regulation = {
 		modifier = {
 			faction_influence_mult = 0.15
 			pop_citizen_happiness = 0.05
-			pop_ethics_shift_speed_mult = 0.5
+			pop_ethics_shift_speed_mult = 0.25
 		}
 
 		AI_weight = {

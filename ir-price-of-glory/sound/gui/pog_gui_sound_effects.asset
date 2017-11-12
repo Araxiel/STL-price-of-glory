@@ -11,11 +11,11 @@ soundeffect = {
 }
 
 soundeffect = {
-	name = event_fednet_sting
+	name = event_FEDNET_sting
 	sounds = {
 		sound = fednet_sting
 	}
-	volume = 0.3
+	volume = 0.5
 	max_audible = 1
 	max_audible_behaviour = fail
 }

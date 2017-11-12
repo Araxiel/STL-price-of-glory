@@ -3,14 +3,13 @@
 # by Araxiel
 ###############################
 
-namespace = pog_economy_event
+namespace = pog_economy
 
-# pog_economy_event.1
-# Bad harvest
+# pog_economy.1			-	Bad harvest
 planet_event = {
-	id = pog_economy_event.1
-	title = pog_economy_event.1.title
-	desc = "pog_economy_event.1.desc"
+	id = pog_economy.1
+	title = pog_economy.1.title
+	desc = "pog_economy.1.desc"
 	location = ROOT
 
 	picture = GFX_evt_sandstorm
@@ -62,6 +61,7 @@ planet_event = {
 		save_event_target_as = disaster_targeted_planet
 	}
 
+	# help
 	option = {
 		name = "help_our_planet_with_aid"
 		allow = {
@@ -140,6 +140,7 @@ planet_event = {
 		}
 	}
 
+	# don't help
 	option = {
 		name = "dont_help_our_planet_with_aid"
 		tooltip = {
@@ -195,19 +196,18 @@ planet_event = {
 						# not closed borders
 						NOT = { has_closed_borders = PREV }
 					}
-					country_event = { id = pog_economy_event.2 days = 10 random = 10 }
+					country_event = { id = pog_economy.2 days = 10 random = 10 }
 				}
 			}
 		}
 	}
 }
 
-# pog_economy_event.2
-# give drought aid to other nation
+# pog_economy.2			-	give drought aid to other nation
 country_event = {
-	id = pog_economy_event.2
-	title = pog_economy_event.2.title
-	desc = "pog_economy_event.2.desc"
+	id = pog_economy.2
+	title = pog_economy.2.title
+	desc = "pog_economy.2.desc"
 	picture = GFX_evt_sandstorm
 	show_sound = event_administrative_work
 
@@ -224,6 +224,7 @@ country_event = {
 	immediate = {
 	}
 
+	# help them
 	option = {
 		name = "help_other_empire_with_aid"
 		allow = {
@@ -238,7 +239,7 @@ country_event = {
 			remove_modifier = disaster_no_aid
 			OWNER = {
 				add_opinion_modifier = { modifier = disaster_aid_recieved who = ROOT }
-				hidden_effect = { country_event = { id = pog_economy_event.3 days = 2 } }
+				hidden_effect = { country_event = { id = pog_economy.3 days = 2 } }
 			}
 		}
 
@@ -271,21 +272,25 @@ country_event = {
 							has_ethic = ethic_fanatic_xenophile
 						}
 					}
-					count_pops = {
-						limit = {
-							NOT = { is_same_species = OWNER }
+					ROOT = {
+						count_pops = {
+							limit = {
+								NOT = { is_same_species = OWNER }
+							}
+							count > 5
 						}
-						count > 5
 					}
 				}
 			}
 			modifier = {
 				factor = 3
-				count_pops = {
-					limit = {
-						NOT = { is_same_species = ROOT }
+				ROOT = {
+					count_pops = {
+						limit = {
+							NOT = { is_same_species = ROOT }
+						}
+						count > 5
 					}
-					count > 5
 				}
 			}
 			modifier = {
@@ -297,6 +302,7 @@ country_event = {
 		}
 	}
 
+	# don't help
 	option = {
 		name = "dont_help_other_empire_with_aid"
 
@@ -312,12 +318,11 @@ country_event = {
 	}
 }
 
-# pog_economy_event.3
-# we recieved drought aid
+# pog_economy.3			-	we recieved drought aid
 country_event = {
-	id = pog_economy_event.3
-	title = pog_economy_event.3.title
-	desc = "pog_economy_event.3.desc"
+	id = pog_economy.3
+	title = pog_economy.3.title
+	desc = "pog_economy.3.desc"
 	picture = GFX_evt_big_landing_ship
 	show_sound = event_administrative_work
 
@@ -346,12 +351,11 @@ country_event = {
 	}
 }
 
-# pog_economy_event.100
-# give general aid to other nation
+# pog_economy.100		-	give general aid to other nation
 country_event = {
-	id = pog_economy_event.100
-	title = pog_economy_event.100.title
-	desc = "pog_economy_event.100.desc"
+	id = pog_economy.100
+	title = pog_economy.100.title
+	desc = "pog_economy.100.desc"
 	picture = GFX_evt_cyberpunk_cops
 	show_sound = event_combine_chatter
 
@@ -382,7 +386,7 @@ country_event = {
 			remove_modifier = disaster_no_aid
 			OWNER = {
 				add_opinion_modifier = { modifier = disaster_aid_recieved who = ROOT }
-				hidden_effect = { country_event = { id = pog_economy_event.101 days = 2 } }
+				hidden_effect = { country_event = { id = pog_economy.101 days = 2 } }
 			}
 		}
 	}
@@ -392,12 +396,11 @@ country_event = {
 	}
 }
 
-# pog_economy_event.101
-# we recieved aid
+# pog_economy.101		-	we recieved aid
 country_event = {
-	id = pog_economy_event.101
-	title = pog_economy_event.101.title
-	desc = "pog_economy_event.101.desc"
+	id = pog_economy.101
+	title = pog_economy.101.title
+	desc = "pog_economy.101.desc"
 	picture = GFX_evt_cyberpunk_cops
 	show_sound = event_combine_chatter
 

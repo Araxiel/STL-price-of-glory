@@ -1,5 +1,6 @@
 
-## planet modifiers
+## planet modifiers             1 = green, 2 = yellow, 3 = red
+
 
 subversive_media = {
   icon = "gfx/interface/icons/planet_modifiers/pm_planet_separatist_supporter.dds"
