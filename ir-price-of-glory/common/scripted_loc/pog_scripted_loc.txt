@@ -1,0 +1,81 @@
+## scripted locs
+
+# GetTroublesSize       - the size of the intelligence
+defined_text = {
+  name = GetTroublesSize
+  text = {
+    trigger = { has_country_flag = parade_troubles_ahead_size_unknown }
+    localization_key = parade_troubles_ahead_size_unknown
+  }
+  text = {
+    trigger = { has_country_flag = parade_troubles_ahead_small_known }
+    localization_key = troublesize_loc_size_unknown
+  }
+  text = {
+    trigger = { has_country_flag = parade_troubles_ahead_medium_known }
+    localization_key = troublesize_loc_medium
+  }
+  text = {
+    trigger = {	has_country_flag = parade_troubles_ahead_big_known }
+    localization_key = troublesize_loc_small
+  }
+}
+
+# GetDemocraticMisconduct       - various types of illegal corruption or misconduct that (democratic-ish) government officials can face
+defined_text = {
+  name = GetDemocraticMisconduct
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 1 }
+    }
+    localization_key = misconduct_embezzlement
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 2 }
+    }
+    localization_key = misconduct_conspiracy
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 3 }
+    }
+    localization_key = misconduct_holo_mail_scandal
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 4 }
+    }
+    localization_key = misconduct_sex_scandal
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 5 }
+    }
+    localization_key = misconduct_offensive_chirper
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 6 }
+    }
+    localization_key = misconduct_bribes
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 7 }
+    }
+    localization_key = misconduct_homicide
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value = 8 }
+    }
+    localization_key = misconduct_corruption_reports
+  }
+  text = {
+    trigger = {
+    	check_variable = { which = @ROOT.rng_value_10.1 value > 8 }
+    }
+    localization_key = misconduct_corruption_rumors
+  }
+}

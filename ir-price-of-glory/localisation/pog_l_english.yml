@@ -4,7 +4,7 @@
 #####################################
 ## Market Regulation
 policy_market_regulation: "Economy Regulation"
-policy_market_regulation_desc: "Our economy is with what type of system goods are being produced and how these goods are being distributed to the citizens.\n\n"
+policy_market_regulation_desc: "Our economy is with what type of system goods are being produced and how these goods are being distributed to the citizens.\n"
 regulation_free_markets_name: "Free Market"
 regulation_free_markets: "Free Market"
 regulation_free_markets_desc: "Private actors are producing and selling goods based on supply and demand. The government is writing and enforcing laws to protect both consumers and corporations for the good of the many, but does not dictate or directly interfere in the market.\n\n"
@@ -29,7 +29,7 @@ TOTALITARIAN_EFFICIENT_MARKET_DESC: "Our military and government needs to be str
 #####################################
 ## Trade Regulation
 policy_trade_regulation: "Trade Regulations"
-policy_trade_regulation_desc: "Trade is how either the citizens of our empires are allowed to interact with citizens of other empires or, in case of a centralised economy, how the state interacts trades with foreigners.\n\n"
+policy_trade_regulation_desc: "Trade is how either the citizens of our empires are allowed to interact with citizens of other empires or, in case of a centralised economy, how the state interacts trade with foreigner actors.\n"
 regulation_mercantilism_name: "Mercantilism"
 regulation_mercantilism: "Mercantilism"
 regulation_mercantilism_desc: "Citizens of our empire are strongly encouraged to buy local and while trade with other empires can happen, it is heavily discouraged through tariffs, taxes and other means of protectionism.\n\n"
@@ -66,7 +66,7 @@ trade_regulation_desc: "Empire Borders will be colored based on their Foreign Tr
 #####################################
 ## Media Regulation
 policy_media_regulation: "Media Regulation"
-policy_media_regulation_desc: "Media is all kind of information that our citizens have access to. This encompasses news from within our empires and from across the galaxy and it also counts towards what kind of entertainment is allowed to be consumed and produced.\n\n"
+policy_media_regulation_desc: "Media is all kind of information that our citizens have access to. This encompasses news from within our empires and from across the galaxy and it also counts towards what kind of entertainment is allowed to be consumed and produced.\n"
 regulation_free_media_name: "Free Media"
 regulation_free_media: "Free Media"
 regulation_free_media_desc: "Our citizens are allowed to consume and produce whatever they desire. The government has no authority over the media and foreign media is allowed to be consumed.\n\n"
@@ -85,7 +85,7 @@ PROGRESSIVE_FREE_MEDIA_DESC: "A well informed citizenry is the best defence agai
 #####################################
 ## Assembly Regulation
 policy_assembly_regulation: "Assembly Regulation"
-policy_assembly_regulation_desc: "The right to meet in public is central to a well-functioning republic or democracy, but it breeds seditiousness and allows hostile actors to steer our empire away from its rightful goal.\n\n"
+policy_assembly_regulation_desc: "The right to meet in public is central to a well-functioning republic or democracy, but it breeds seditiousness and allows hostile actors to steer our empire away from its rightful goal.\n"
 regulation_free_assembly_name: "Assembly Allowed"
 regulation_free_assembly: "Assembly Allowed"
 regulation_free_assembly_desc: "Citizens are allowed to freely assemble and hold public meetings.\n\n"
@@ -129,16 +129,106 @@ planet_resource_energy_add: "$tile_resource_energy_add$"
 #####################################
 ### Events
 #####################################
-pog_media_event.2.title: "Subversive Media"
-pog_media_event.2.desc: "Some troublesome individuals have spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nWhile the local authorities have immediately started cracking down on subjects and the media itself and we trust that the good citizens of our empire can not be persuaded by such reprehensible propaganda, we can not guarantee that these filthy lies have not infected at least some of our people."
 
-pog_media_event.3.title: "Subversive Media Intercepted"
-pog_media_event.3.desc: "It has come to our attention that some troublesome individuals plan to spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nOur local authorities unearthed the radicals' operation and are ready to raid their hideout and confiscate all subversive material and arrest the people responsible for this.\n\nHowever, instead of what some might call a heavy-handed approach, we can put our trust in the stalwart vigilance of our citizens, knowing that no belligerent propaganda will sway their minds from the one true path."
-pog_media_event.3.a: "Raid the insurgents."
-pog_media_event.3.b: "Let them carry out their fruitless endeavour."
+## immediately resign based on alleged misconduct, delinquency and [ROOT.GetDemocraticMisconduct] by members of the administration.
+misconduct_embezzlement: "reports of §Hembezzlement§!"
+misconduct_embezzlement: "rumors of §Hconspiracy§!"
+misconduct_holo_mail_scandal: "rumors surrounding the recent §Hholo-mail scandal§!"
+misconduct_sex_scandal: "rumors surrounding the recent §Hsex scandal§!"
+misconduct_offensive_chirper: "recent §Hoffensive Chirper posts§!"
+misconduct_bribes: "rumors of §Hbribes§!"
+misconduct_homicide: "the ongoing §Hhomicide trail§!"
+misconduct_corruption_reports: "reports of §Hcorruption§!"
+misconduct_corruption_rumors: "rumors of §Hcorruption§!"
 
-pog_economy_event.1.title: "Drought"
-pog_economy_event.1.desc: "Drought on §H[ROOT.GetName]§!. WIP"
+troublesize_loc_small: "a §Hsmall§! interference"
+troublesize_loc_medium: "a §Hmedium sized§! operation"
+troublesize_loc_big: "a §Hlarge-scale§! operation"
+troublesize_loc_size_unknown: "a §Hsomething§!"
+
+#######################
+##### Military Events
+
+decennial_military_parade: "Decennial Military Parade"
+
+fleet_enlargement_drive: "Fleet Enlargement Drive"
+pog_military.10.name: "$decennial_military_parade$"
+pog_military.10.desc: "Our Decennial Military Parade was held in our capital §H[ROOT.Capital.GetName]§!.\n\nWhile impressive and a great celebration for our people, our admirals have used the ceremony to emphasise the need to expand our fleet if we truly wish to grasp for the stars.\nMany of our military and public leaders have promised to help in the enlargement of our fleet, promising an even large parade next decade."
+
+pog_military.02.title: "$decennial_military_parade$"
+pog_military.02.desc.main: "It is time again for our Decennial Military Parade. Every decade our citizens come from far and wide to join in the celebration of our grand nation in §H[ROOT.Capital.GetName]§!.\n\nOver the course of multiple days, many our fleet's ships will fly across the planet in low orbit, while ground troops will parade along the largest streets of our capital and the air will be populated by strike crafts flying in formation. Many temporary space stations will be towed along the parade route for spectators to see the spectacle in space from up close.\n\n"
+pog_military.02.desc.leader: "All important government officials and high-ranking military officers will be present, most notably §H[ROOT.GetRulerTitle] [ROOT.GetRulerName]§! and [ROOT.leader.GetHerHis] cabinet."
+pog_military.02.desc.leader_imperial: "All important government officials and high-ranking military officers will be present, most notably §H[ROOT.GetRulerTitle] [ROOT.GetRulerName]§! and [ROOT.leader.GetHerHis] court."
+pog_military.02.desc.troubles_known: "\n§HWarning:§! It has come to our security forces' attention that subversive elements have planned [ROOT.GetTroublesSize]. Should we still go ahead?"
+no_parade_event_follows: "The people expect a parade and won't like this."
+pog_military.02.b: "Prepare for the parade!"
+pog_military.02.c: "Prepare for a grand parade!"
+
+local_celebration: "Great Celebration"
+local_celebration_desc: "Many tourists and travelers have arrived on the planet to partake in the local celebration."
+grand_celebration: "Grand Celebration"
+grand_celebration_desc: "$local_celebration_desc$"
+
+pog_military.04.name: "Military Parade a Success"
+pog_military.04.desc: "The celebration on §H[ROOT.OWNER.Capital.GetName]§! have come to an end.\n\nThe last couple of days have been astounding success and a great show of force. The people are slowly WIP"
+pog_military.04.a: "The celebration was a success!"
+
+pog_military.05.name: "Military Parade a Failure"
+pog_military.05.desc: "Military Parade a Failure  WIP"
+
+pog_military.05.name: "No Parade"
+pog_military.05.desc: "No Parade  WIP"
+
+pog_military.06.name: "No Parade"
+pog_military.06.desc.start: "No Parade happend WIP"
+pog_military.06.desc.fanatic_militarist: "This will hurt especially because we're militarists WIP"
+pog_military.06.desc.fanatic_authoritarian: "This will hurt especially because we're authoritarian WIP"
+
+pog_military.12.name: "[FROM.GetName] hosts Military Parade"
+pog_military.12.desc: "We've been invited to [FROM.GetName] Decennial Military Parade. WIP"
+
+FLEET_PARADE_1_PROJECT: "$decennial_military_parade$"
+FLEET_PARADE_1_PROJECT_DESC: "$pog_military.02.desc$\n\nThe parade will begin once all of the allocated forces have reached the orbit of §H[ROOT.Capital.GetName]§!.\n"
+FLEET_PARADE_2_PROJECT: "$FLEET_PARADE_1_PROJECT$"
+FLEET_PARADE_2_PROJECT_DESC: "$FLEET_PARADE_1_PROJECT$"
+FLEET_PARADE_3_PROJECT: "$FLEET_PARADE_1_PROJECT$"
+FLEET_PARADE_3_PROJECT_DESC: "$FLEET_PARADE_1_PROJECT$"
+
+no_military_parade_held: "No Military Parade Held"
+fleet_parade_held: "Military Parade Held"
+
+we_gained_insurgency_intel: "We found various leads on insurgent activities."
+
+pog_military.120.name: "Protesters"
+pog_military.120.desc.small: "During the height of the celebrations, a small group of §H[ROOT.protesters_number]§! protesters tried to disrupt the celebrations.\n\n"
+pog_military.120.desc.medium: "During the height of the celebrations, a group of §H[ROOT.protesters_number]§! protesters tried to disrupt the celebrations.\n\n"
+pog_military.120.desc.big: "During the height of the celebrations, a great group of §H[ROOT.protesters_number]§! protesters tried to disrupt the celebrations.\n\n"
+pog_military.120.desc.imperial: "The demonstrators are directly addressing §H[ROOT.GetRulerTitle] [ROOT.GetRulerName]§! and amongst the usual demands these rabel-rouser have, they vehemently demand representation and a say in our rulers court. This obscene clamor simply proves that the common rabble can not be trusted to respect our mighty empire.\n\n"
+pog_military.120.desc.dictatorship: "The demonstrators are addressing the regime and demand democratic election and from the §H[ROOT.GetRulerTitle]§! and [ROOT.leader.GetHerHis] cabinet. Their insolent demands reek of short-sightedness and a lack of respect for tradition and efficiency.\n\n"
+pog_military.120.desc.democratic: "The demonstrators are addressing the incumbend government and demand that §H[ROOT.GetRulerTitle] [ROOT.GetRulerName]§! and [ROOT.leader.GetHerHis] cabinet immediately resign based on alleged misconduct, delinquency and [ROOT.GetDemocraticMisconduct] by members of the administration.\n\n"
+pog_military.120.desc.small.end: "It should be fairly easy for our security to take care of this small group without causing any disturbance to the ceremony."
+pog_military.120.desc.medium.end: "Unless anything unexpected happens, our security forces should be able to handle this mob."
+pog_military.120.desc.big.end: "While our security forces are trying their best, we simply do not have the required manpower to take care of this many people."
+pog_military.120.a: "Get rid of those protesters!"
+pog_military.120.b: "Let them have their protest."
+pog_military.120.c: "I want every officer to shut these protesters up! No one shall spoil the celebrations!"
+
+#######################
+##### Media Events
+
+pog_media.2.title: "Subversive Media"
+pog_media.2.desc: "Some troublesome individuals have spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nWhile the local authorities have immediately started cracking down on subjects and the media itself and we trust that the good citizens of our empire can not be persuaded by such reprehensible propaganda, we can not guarantee that these filthy lies have not infected at least some of our people."
+
+pog_media.3.title: "Subversive Media Intercepted"
+pog_media.3.desc: "It has come to our attention that some troublesome individuals plan to spread unsanctioned, subversive media across §H[ROOT.GetName]§!.\n\nOur local authorities unearthed the radicals' operation and are ready to raid their hideout and confiscate all subversive material and arrest the people responsible for this.\n\nHowever, instead of what some might call a heavy-handed approach, we can put our trust in the stalwart vigilance of our citizens, knowing that no belligerent propaganda will sway their minds from the one true path."
+pog_media.3.a: "Raid the insurgents."
+pog_media.3.b: "Let them carry out their fruitless endeavour."
+
+#######################
+##### Economic Events
+
+pog_economy.1.title: "Drought"
+pog_economy.1.desc: "Drought on §H[ROOT.GetName]§!. WIP"
 
 help_our_planet_with_aid: "Send Disaster Aid to them!"
 dont_help_our_planet_with_aid: "We can't spare those resources."
@@ -147,11 +237,11 @@ dont_help_other_empire_with_aid: "We can't spare those resources to help them."
 disaster_aid_send: "Send Aid"
 disaster_aid_recieved: "Recieved Aid"
 
-pog_economy_event.2.title: "Drought struck the [FROM.OWNER.GetName]"
-pog_economy_event.2.desc: "Drought has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+pog_economy.2.title: "Drought struck the [FROM.OWNER.GetName]"
+pog_economy.2.desc: "Drought has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
 
-pog_economy_event.3.title: "We Recieved Help!"
-pog_economy_event.3.desc: "Disaster has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
+pog_economy.3.title: "We Recieved Help!"
+pog_economy.3.desc: "Disaster has hit §H[FROM.OWNER.GetName]§! on their planet §H[FROM.GetName]§!. Send aid y/n? WIP"
 
 ## Disaster Aid cost
 need_minerals_5people: "Need 5000 £minerals\n\n"

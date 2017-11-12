@@ -1,0 +1,215 @@
+###############################
+# Debugging Events
+# by Araxiel
+###############################
+
+##### Debugging Events
+namespace = pog_debug
+
+# pog_debug.1		- general debugging event
+country_event = {
+	id = pog_debug.1
+	title = "Debugging Cheats"
+	desc = "A debugging event"
+
+	picture = GFX_evt_debugging
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	option = {
+		name = "debugging flag"
+		custom_tooltip = "set_global_flag = pog_debugging"
+		set_global_flag = pog_debugging
+	}
+	option = {
+		name = "turn off debugging flag"
+		custom_tooltip = "remove_global_flag = pog_debugging"
+		remove_global_flag = pog_debugging
+	}
+	option = {
+		name = "motherload"
+		add_minerals = 10000
+		add_energy = 10000
+		add_food = 10000
+	}
+	option = {
+		name = "ship tech and buildingbuff"
+		add_modifier = {
+			modifier = debugging_ship_build_cheat
+			days = 1825 # 5 years
+		}
+		give_technology = { tech = tech_spaceport_2 }
+		give_technology = { tech = tech_spaceport_3 }
+		give_technology = { tech = tech_spaceport_4 }
+		give_technology = { tech = tech_spaceport_5 }
+		give_technology = { tech = tech_spaceport_6 }
+		give_technology = { tech = tech_mass_drivers_4 }
+		give_technology = { tech = tech_antimatter_power }
+	}
+
+	option = {
+		name = "ship buff"
+		add_modifier = {
+			modifier = debugging_ship_buff_cheat
+			days = 1825 # 5 years
+		}
+	}
+	option = {
+		name = "pop growth"
+		add_modifier = {
+			modifier = debugging_pop_growth_cheat
+			days = 1825 # 5 years
+		}
+		give_technology = { tech = tech_genome_mapping }
+		give_technology = { tech = tech_vitality_boosters }
+		give_technology = { tech = tech_epigenetic_triggers }
+		give_technology = { tech = tech_gene_banks }
+		give_technology = { tech = tech_gene_seed_purification }
+		give_technology = { tech = tech_morphogenetic_field_mastery }
+		give_technology = { tech = tech_gene_tailoring }
+		give_technology = { tech = tech_gene_expressions }
+	}
+	option = {
+		name = "building buff"
+		add_modifier = {
+			modifier = debugging_building_cheat
+			days = 1825 # 5 years
+		}
+	}
+}
+
+# choose parade incident event
+country_event = {
+	id = pog_debug.2
+	title = "Debug Choose Parade Incident Before"
+	desc = "A debugging event"
+	picture = GFX_evt_debugging
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+	}
+
+	option = {
+		name = "small protest"
+
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead_small
+			days = 730
+		}
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead
+			days = 730
+		}
+		set_timed_country_flag  = {
+		flag = parade_troubles_ahead_protest
+		days = 730
+		}
+		parade_unknown_size_intelligence = yes
+	}
+
+	option = {
+		name = "medium protest"
+
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead_medium
+			days = 730
+		}
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead
+			days = 730
+		}
+		set_timed_country_flag  = {
+		flag = parade_troubles_ahead_protest
+		days = 730
+		}
+		parade_unknown_size_intelligence = yes
+	}
+
+}
+
+# choose parade incident event during
+country_event = {
+	id = pog_debug.4
+	title = "Debug Choose Parade Incident During"
+	desc = "A debugging event"
+	picture = GFX_evt_debugging
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	option = {
+		name = "OK"
+	}
+
+	option = {
+		name = "small protest"
+
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead_small
+			days = 730
+		}
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead
+			days = 730
+		}
+		set_timed_country_flag  = {
+		flag = parade_troubles_ahead_protest
+		days = 730
+		}
+
+		country_event = { id = pog_military.120 }
+	}
+
+	option = {
+		name = "medium protest"
+
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead_medium
+			days = 730
+		}
+		set_timed_country_flag  = {
+			flag = parade_troubles_ahead
+			days = 730
+		}
+		set_timed_country_flag  = {
+		flag = parade_troubles_ahead_protest
+		days = 730
+		}
+
+		country_event = { id = pog_military.120 }
+	}
+
+}
+
+# test
+country_event = {
+	id = pog_debug.3
+	title = "Debug"
+	desc = "A debugging event"
+	picture = GFX_evt_debugging
+	show_sound = event_factions
+
+	is_triggered_only = yes
+
+	immediate = {
+		random_pop_faction = {
+			save_event_target_as = dat_faction
+		}
+	}
+
+	option = {
+		name = "SimpleTest"
+		generate_rng_10.1 = yes
+		add_energy = "@ROOT.rng_value_10.1"
+		add_energy = @ROOT.rng_value_10.1
+	}
+
+	option = {
+		name = "SimpleTest2"
+	}
+
+}

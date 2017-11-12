@@ -1,6 +1,6 @@
 on_decade_pulse = {
   events = {
-    pog_media_event.10
+    pog_military.01
   }
 }
 

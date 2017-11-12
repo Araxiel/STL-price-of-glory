@@ -86,7 +86,6 @@ pay_disaster_resources = {
     add_energy = @25people_resource_cost
     add_food = @25people_food_cost
   }
-
 }
 
 pay_food_disaster_resources = {
@@ -155,5 +154,95 @@ pay_food_disaster_resources = {
     }
     add_food = @25people_food_cost
   }
+}
 
+decide_which_parade_troubles_ahead = {
+  # debugging
+  if = {
+    limit = { has_global_flag = pog_debugging }
+    country_event = { id = pog_debug.2 days = 2 }
+    else = {
+      ### large troubles
+      random_list = {
+        10 = {
+          set_timed_country_flag = { flag = parade_troubles_ahead_big               days = 730 }
+          # likelyhood of intelligence
+          random_list = {
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_big_known     days = 730 }
+              set_timed_country_flag = { flag = parade_troubles_ahead_some_known    days = 730 }
+            }
+            30 = {
+              parade_unknown_size_intelligence = yes
+            }
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_unknown       days = 730 }
+            }
+          }
+        }
+        ##### medium troubles
+        35 = {
+          set_timed_country_flag = { flag = parade_troubles_ahead_medium            days = 730 }
+          # likelyhood of intelligence
+          random_list = {
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_medium_known  days = 730 }
+            }
+            30 = {
+              parade_unknown_size_intelligence = yes
+            }
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_unknown       days = 730 }
+            }
+          }
+        }
+        #### small troubles
+        55 = {
+          set_timed_country_flag = { flag = parade_troubles_ahead_small             days = 730 }
+          set_timed_country_flag = { flag = parade_troubles_ahead_some_known        days = 730 }
+          # likelyhood of intelligence
+          random_list = {
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_medium_known  days = 730 }
+            }
+            30 = {
+              parade_unknown_size_intelligence = yes
+            }
+            30 = {
+              set_timed_country_flag = { flag = parade_troubles_ahead_unknown       days = 730 }
+            }
+          }
+        }
+      }
+      ##################### type
+      random_list = {
+        # general protest
+        200 = {
+          set_timed_country_flag  = { flag = parade_troubles_ahead_protest         days = 730 }
+        }
+        1 = {
+          # nothing; backup
+        }
+      }
+    }
+  }
+}
+
+# randomises the likelyhood of a wrong intelligence regarding the size
+parade_unknown_size_intelligence = {
+  set_timed_country_flag = { flag = parade_troubles_ahead_some_known            days = 730 }
+  random_list = {
+    30 = {
+      set_timed_country_flag = { flag = parade_troubles_ahead_size_unknown      days = 730 }
+    }
+    10 = {
+      set_timed_country_flag = { flag = parade_troubles_ahead_big_known         days = 730 }
+    }
+    10 = {
+      set_timed_country_flag = { flag = parade_troubles_ahead_medium_known      days = 730 }
+    }
+    10 = {
+      set_timed_country_flag = { flag = parade_troubles_ahead_small_known       days = 730 }
+    }
+  }
 }

@@ -2,6 +2,8 @@
 # OPINION MODIFIERS
 ##########################################################################
 
+############################# Static
+
 opinion_policy_trade_regulation = {
 	opinion = {
 		base = 0
@@ -33,6 +35,8 @@ opinion_policy_trade_regulation = {
 	}
 }
 
+############################# Dynamic
+
 ### Disaster Aid sending
 disaster_aid_send = {
 	opinion = {
@@ -51,5 +55,15 @@ disaster_aid_recieved = {
 
 	decay = {
 		base = 2
+	}
+}
+
+joined_celebration = {
+	opinion = {
+		base = 25
+	}
+
+	decay = {
+		base = 3
 	}
 }

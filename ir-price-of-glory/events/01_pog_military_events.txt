@@ -1,0 +1,794 @@
+###############################
+# Military Events
+# by Araxiel
+###############################
+
+@5years = 1825
+
+##### Media Events
+namespace = pog_military
+
+# pog_military.01		-	Decennial Miitary Parade Pulse (HIDDEN)      - NO AI for now
+event = {
+	id = pog_military.01
+	hide_window = yes
+	is_triggered_only = yes
+
+	immediate = {
+		every_playable_country = {
+			limit = {
+				OR = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_militarist
+				}
+        is_ai = no
+			}
+      ## checks if fleet is large enough
+      if = {
+        limit = {
+          fleet_power > 3999
+        }
+        ## starting the parade event
+        country_event = { id = pog_military.02 days = 30 random = 30 }
+        ## check if there is any troubles ahead (accidents can happen ontop of this)
+        random_list = {
+          15 = {
+            set_timed_country_flag = { flag = parade_troubles_ahead  days = 730 }
+            ## script to make this less cluttered
+            decide_which_parade_troubles_ahead = yes
+          }
+          85 = {
+            # everything's fine
+          }
+        }
+        if = {
+          limit = { has_global_flag = pog_debugging }
+          country_event = { id = pog_debug.2 days = 2 }
+        }
+        else = {
+          ## if fleetpower less than 8k
+          country_event = { id = pog_military.10 days = 30 random = 30 }
+        }
+      }
+		}
+	}
+}
+
+# pog_military.02		- Miitary Parade Started
+country_event = {
+	id = pog_military.02
+	title = pog_military.02.title
+	picture = GFX_evt_authoritarian
+	show_sound = event_FEDNET_sting
+
+  desc = {
+		trigger = {
+			text = pog_military.02.desc.main
+      success_text = {
+				text = pog_military.02.desc.leader
+				NOT = { has_authority = auth_imperial }
+			}
+			success_text = {
+				text = pog_military.02.desc.leader_imperial
+				has_authority = auth_imperial
+			}
+			success_text = {
+				text = pog_military.02.desc.troubles_known
+				OR = {
+          has_country_flag = parade_troubles_ahead_size_unknown
+          has_country_flag = parade_troubles_ahead_small_known
+          has_country_flag = parade_troubles_ahead_medium_known
+          has_country_flag = parade_troubles_ahead_big_known
+        }
+			}
+		}
+	}
+
+	location = ROOT
+
+	is_triggered_only = yes
+
+	trigger = {
+	}
+
+	after = {
+	}
+
+	immediate = {
+	}
+
+	# no celebration
+	option = {
+		name = "NOTIME"
+
+    trigger  = {
+      NOR = {
+        has_country_flag = has_insurgency_intel
+        has_country_flag = parade_troubles_ahead_some_known
+      }
+    }
+
+		set_timed_country_flag  = { flag = no_military_parade_held  days = 730 }
+    custom_tooltip = "no_parade_event_follows"
+		hidden_effect = {
+      country_event = { id = pog_military.06 days = 10 random = 10 }
+    }
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.5
+				has_ethic = ethic_authoritarian
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+
+  # we can't risk it
+	option = {
+		name = "anomaly.1192.b"
+
+    trigger  = {
+      OR = {
+        has_country_flag = has_insurgency_intel
+        has_country_flag = parade_troubles_ahead_some_known
+      }
+    }
+
+		set_timed_country_flag = { flag = no_military_parade_held  days = 730 }
+    custom_tooltip = "no_parade_event_follows"
+		hidden_effect = {
+      country_event = { id = pog_military.06 days = 10 random = 10 }
+    }
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.5
+				has_ethic = ethic_fanatic_authoritarian
+			}
+		}
+	}
+
+	# celebrate
+	option = {
+		name = pog_military.02.b
+
+		capital_scope = {
+      add_modifier = {
+        modifier = "local_celebration"
+      }
+			save_event_target_as = parade_location
+			if = {
+				limit = {
+					root = {
+						fleet_power > 3999
+						fleet_power < 10000
+					}
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_1_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						fleet_power > 9999
+						fleet_power < 40000
+					}
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_2_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = { fleet_power > 39999 }
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_3_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 200
+			modifier = {
+				factor = 2
+				has_ethic = ethic_fanatic_militarist
+			}
+		}
+	}
+
+	# grand-celebration
+	option = {
+		name = pog_military.02.c
+
+		allow = {
+			minerals > 1000
+			energy > 2000
+			food > 20
+		}
+
+		add_minerals = -1000
+		add_energy = -2000
+		add_food = -20
+    set_timed_country_flag = { flag = grand_military_parade_held  days = 730 }
+
+		capital_scope = {
+			save_event_target_as = parade_location
+      add_modifier = {
+    		modifier = "grand_celebration"
+    	}
+      if = {
+				limit = {
+					root = {
+						fleet_power > 3999
+						fleet_power < 10000
+					}
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_1_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = {
+						fleet_power > 9999
+						fleet_power < 40000
+					}
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_2_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+			if = {
+				limit = {
+					root = { fleet_power > 39999 }
+				}
+				enable_special_project = {
+					name = "FLEET_PARADE_3_PROJECT"
+					location = event_target:parade_location
+					owner = root
+				}
+				break = yes
+			}
+		}
+
+		ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 8
+				has_ethic = ethic_fanatic_militarist
+				OR = {
+					has_ethic = ethic_authoritarian
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+	}
+}
+
+# pog_military.03		- Parade 50%/75% Completed (HIDDEN)
+ship_event = {
+	id = pog_military.03
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			any_owned_fleet = {
+				exists = orbit
+				exists = leader
+				orbit = { is_same_value = event_target:parade_location }
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			random_owned_fleet = {
+				limit = {
+					exists = orbit
+					exists = leader
+					orbit = { is_same_value = event_target:parade_location }
+				}
+				leader = { save_event_target_as = parade_admiral }
+				save_event_target_as = parade_fleet
+			}
+      if = {
+        limit = {
+          event_target:parade_location = {
+            OWNER = {
+              has_country_flag = parade_troubles_ahead
+              NOT = { has_country_flag = parade_troubles_happened }
+            }
+          }
+        }
+        random_list = {
+          ## Everything's fine
+          25 = {
+          }
+          ## Parade Troubles
+          50 = {
+            event_target:parade_location = {
+              OWNER = {
+                switch = {
+                	trigger = has_country_flag
+                	parade_troubles_ahead_protest  = { country_event = { id = pog_military.120 } }
+                }
+              }
+            }
+          }
+          ## Parade Troubles found
+          25 = {
+            event_target:parade_location = {
+              OWNER = {
+                country_event = { id = pog_military.130 }
+              }
+            }
+          }
+        }
+        else = {
+          random_list = {
+    				## Everything's fine
+    				90 = {
+    				}
+    				## Accident
+    				10 = {
+              event_target:parade_location = {
+                OWNER = {
+                  country_event = { id = pog_military.110 }
+                }
+              }
+    				}
+    			}
+        }
+      }
+      event_target:parade_location = {
+        OWNER = {
+          if = {
+            limit = { has_global_flag = pog_debugging }
+            country_event = { id = pog_debug.4 }
+          }
+        }
+      }
+    }
+	}
+}
+
+# pog_military.04 	- Parade Success
+ship_event = {
+	id = pog_military.04
+	title = "pog_military.04.name"
+	desc = "pog_military.04.desc"
+  picture = GFX_evt_authoritarian
+	show_sound = event_celebration
+
+	is_triggered_only = yes
+
+	option = {
+		name = "EXCELLENT"
+    event_target:parade_location = {
+      if = {
+        limit = {
+          has_modifier = local_celebration
+        }
+        remove_modifier = local_celebration
+      }
+      if = {
+        limit = {
+          has_modifier = grand_celebration
+        }
+        remove_modifier = grand_celebration
+      }
+    }
+		OWNER = {
+      add_modifier = {  modifier = "fleet_parade_held"	days = @5years	}
+      set_timed_country_flag  = {	flag = fleet_parade_held  days = @5years	}
+    }
+    leader = {
+      save_event_target_as = parade_admiral
+    }
+	}
+}
+
+# pog_military.05 	- Parade Failed
+country_event = {
+	id = pog_military.05
+	title = "pog_military.05.name"
+	desc = "pog_military.05.desc"
+  picture = GFX_evt_authoritarian
+	show_sound = event_cityscape
+
+	is_triggered_only = yes
+
+	option = {
+		name = "DISCONCERTING"
+
+    event_target:parade_location = {
+      if = {
+        limit = {
+          has_modifier = local_celebration
+        }
+        remove_modifier = local_celebration
+      }
+      if = {
+        limit = {
+          has_modifier = grand_celebration
+        }
+        remove_modifier = grand_celebration
+      }
+    }
+    country_event = { id = pog_military.06 days = 10 random = 10 }
+	}
+}
+
+# pog_military.06 	- No Parade
+country_event = {
+	id = pog_military.06
+	title = "pog_military.06.name"
+	picture = GFX_evt_news_room
+	show_sound = event_administrative_work
+
+	is_triggered_only = yes
+
+	# different text based on ethics
+	desc = {
+		trigger = {
+			text = pog_military.06.desc.start
+			success_text = {
+				text = pog_military.06.desc.fanatic_militarist
+				has_ethic = ethic_fanatic_militarist
+			}
+			success_text = {
+				text = pog_military.06.desc.fanatic_authoritarian
+				AND = {
+					has_ethic = ethic_militarist
+					has_ethic = ethic_fanatic_authoritarian
+				}
+			}
+		}
+	}
+
+	option = {
+		name = "UNFORTUNATE"
+
+		# if parade is important, the penalty will last longer (in addition to other problems)
+		if = {
+			limit = {
+				OR = {
+					has_ethic = ethic_fanatic_militarist
+					AND = {
+						has_ethic = ethic_militarist
+						has_ethic = ethic_fanatic_authoritarian
+					}
+				}
+			}
+			add_modifier = {
+				modifier = "no_military_parade_held"
+				days = 2190 	#6 years
+			}
+			else = {
+				add_modifier = {
+					modifier = "no_military_parade_held"
+					days = 1095 	#3 years
+				}
+			}
+		}
+	}
+}
+
+# pog_military.10 	- Fleet to small for parade
+country_event = {
+	id = pog_military.10
+	title = "pog_military.10.name"
+	desc = "pog_military.10.desc"
+  picture = GFX_evt_authoritarian
+	show_sound = event_FEDNET_sting
+
+	location = ROOT
+
+	is_triggered_only = yes
+
+	option = {
+		name = "MARVELOUS"
+    add_modifier = {
+  		modifier = "fleet_enlargement_drive"
+  		days = 2190  #6 years
+  	}
+    capital_scope = {
+      add_modifier = {
+        modifier = "local_celebration"
+        days = 60
+      }
+    }
+	}
+}
+
+# pog_military.11		- Parade 25% (HIDDEN)    - inviting foreigners
+ship_event = {
+	id = pog_military.11
+	hide_window = yes
+
+	is_triggered_only = yes
+
+	trigger = {
+		owner = {
+			any_owned_fleet = {
+				exists = orbit
+				exists = leader
+				orbit = { is_same_value = event_target:parade_location }
+			}
+		}
+	}
+
+	immediate = {
+		owner = {
+			random_owned_fleet = {
+				limit = {
+					exists = orbit
+					exists = leader
+					orbit = { is_same_value = event_target:parade_location }
+				}
+				leader = { save_event_target_as = parade_admiral }
+				save_event_target_as = parade_fleet
+			}
+      OWNER = {
+        if = {
+          limit = {
+            NOR = {
+              is_murdering_monsters = yes
+              is_isolationist = yes
+              has_ethic = ethic_fanatic_xenophobe
+            }
+          }
+          every_country = {
+            limit = {
+              OR = {
+                # Is a friend
+                AND = {
+                  opinion = { who = PREV value > 120 }
+                }
+                # is in federation
+                OR = {
+                  is_in_federation_with = PREV
+                  has_association_status = PREV
+                }
+              }
+              # not closed borders
+              NOT = { has_closed_borders = PREV }
+            }
+            country_event = { id = pog_military.12 days = 1 random = 3 }
+          }
+        }
+			}
+		}
+	}
+}
+
+# pog_military.12 	- We've been invited
+country_event = {
+	id = pog_military.12
+	title = "pog_military.12.name"
+	desc = "pog_military.12.desc"
+  picture = GFX_evt_authoritarian
+	show_sound = event_FEDNET_sting
+
+	location = FROM
+
+	is_triggered_only = yes
+
+	option = {
+		name = "MARVELOUS"
+    FROM = {
+      set_timed_country_flag  = {
+  			flag = parade_has_foreign_visitor
+  			days = 300
+  		}
+      add_opinion_modifier = { modifier = joined_celebration who = ROOT }
+    }
+    set_timed_country_flag  = {
+      flag = foreign_visitor_to_parade_of_@FROM
+      days = 300
+    }
+    add_opinion_modifier = { modifier = joined_celebration who = FROM }
+
+    ai_chance = {
+			factor = 100
+			modifier = {
+				factor = 0.1
+				has_ethic = ethic_xenophobe
+			}
+			modifier = {
+				factor = 0.02
+				has_ethic = ethic_fanatic_xenophobe
+			}
+			modifier = {
+				factor = 1.5
+				has_ethic = ethic_xenophile
+			}
+			modifier = {
+				factor = 2
+				has_ethic = ethic_fanatic_xenophile
+			}
+			modifier = {
+				factor = 2
+				OR = {
+          has_ethic = ethic_militarist
+          has_ethic = ethic_fanatic_militarist
+        }
+			}
+		}
+	}
+
+	option = {
+		name = "NOTIME"
+    ai_chance = {
+      factor = 25
+    }
+	}
+}
+
+# pog_military.110 	- Parade Accident
+country_event = {
+	id = pog_military.110
+	title = "pog_military.110.name"
+	desc = "pog_military.110.desc"
+	picture = GFX_evt_unknown_ships
+	show_sound = event_sensor_ping
+
+	is_triggered_only = yes
+
+	option = {
+		name = "pog_military.110.a"
+    add_modifier = {
+      modifier = "no_military_parade_held"
+      days = 1095 	#3 years
+    }
+	}
+}
+
+# pog_military.120 	- Parade Insurgent -  Protest
+country_event = {
+	id = pog_military.120
+	title = "pog_military.120.name"
+	picture = GFX_evt_protest
+	show_sound = event_planetary_riot
+
+	is_triggered_only = yes
+
+	immediate = {
+    ## generate some numbers
+    generate_rng_10.1 = yes
+    generate_rng_10.2 = yes
+    generate_rng_100 = yes
+
+    switch = {
+      trigger = has_country_flag
+      parade_troubles_ahead_small  = {
+        multiply_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.1 }
+        change_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.2 }
+        multiply_variable = { which = @ROOT.rng_value_100 value = 5 }
+      }
+      parade_troubles_ahead_medium  = {
+        multiply_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.1 }
+        change_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.2 }
+        multiply_variable = { which = @ROOT.rng_value_100 value = 200 }
+      }
+      parade_troubles_ahead_big  = {
+        multiply_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.1 }
+        change_variable = { which = @ROOT.rng_value_100 value = @ROOT.rng_value_10.2 }
+        multiply_variable = { which = @ROOT.rng_value_100 value = 2000 }
+      }
+    }
+    change_variable = { which = protesters_number value = @ROOT.rng_value_100 }
+  }
+
+  desc = {
+    trigger = {
+      success_text = {
+        text = pog_military.120.desc.small
+        has_country_flag = parade_troubles_ahead_small
+      }
+      success_text = {
+        text = pog_military.120.desc.medium
+        has_country_flag = parade_troubles_ahead_medium
+      }
+      success_text = {
+        text = pog_military.120.desc.big
+        has_country_flag = parade_troubles_ahead_big
+      }
+      success_text = {
+        text = pog_military.120.desc.dictatorship
+        has_authority = auth_dictatorial
+      }
+      success_text = {
+        text = pog_military.120.desc.imperial
+        has_authority = auth_imperial
+      }
+      success_text = {
+        text = pog_military.120.desc.democratic
+        OR = {
+          has_authority = auth_democratic
+          has_authority = auth_oligarchic
+        }
+      }
+      success_text = {
+        text = pog_military.120.desc.small.end
+        has_country_flag = parade_troubles_ahead_small
+      }
+      success_text = {
+        text = pog_military.120.desc.medium.end
+        has_country_flag = parade_troubles_ahead_medium
+      }
+      success_text = {
+        text = pog_military.120.desc.big.end
+        has_country_flag = parade_troubles_ahead_big
+      }
+    }
+  }
+
+  ## get rid of them
+	option = {
+		name = "pog_military.120.a"
+    ## WIP
+	}
+  ## let them do their protest
+	option = {
+		name = "pog_military.120.b"
+    ## WIP
+	}
+  ## full force against large protest
+	option = {
+		name = "pog_military.120.c"
+    trigger = { has_country_flag = parade_troubles_ahead_big }
+    custom_tooltip = pog_military.120.c.tooltip
+    ## WIP
+	}
+
+  after = {
+    set_timed_country_flag = {
+      flag = parade_troubles_happened
+      days = 720
+    }
+  }
+}
+
+# pog_military.130 	- Parade Insurgents found
+country_event = {
+	id = pog_military.130
+	title = "pog_military.130.name"
+	desc = "pog_military.130.desc"
+  picture = GFX_evt_cyberpunk_cops
+	show_sound = event_combine_chatter
+
+	location = ROOT
+
+	is_triggered_only = yes
+
+	option = {
+		name = "SPLENDID"
+    custom_tooltip = "we_gained_insurgency_intel"
+    set_timed_country_flag = {
+      flag = has_insurgency_intel
+      days = 720
+    }
+	}
+}
